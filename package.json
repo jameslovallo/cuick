@@ -1,0 +1,11 @@
+{
+	"name": "cuick",
+	"version": "0.0.0",
+	"description": "Write custom elements the cuick way.",
+	"main": "index.js",
+	"scripts": {
+		"dev": "npx browser-sync start . -s --files \"**/*.html, **/*.css, **/*.js, **/*.md\" --single"
+	},
+	"author": "",
+	"license": "ISC"
+}

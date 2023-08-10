@@ -1,0 +1,145 @@
+:root,
+html,
+body {
+	font-family: sans-serif;
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+nav {
+	display: flex;
+	gap: 1rem;
+	padding: 1rem;
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+
+nav a {
+	color: currentColor;
+	text-decoration: none;
+}
+
+nav a:first-of-type {
+	margin-left: auto;
+}
+
+nav a:hover,
+nav [slot='open']:hover {
+	color: dodgerblue;
+}
+
+nav a,
+nav [slot='open'] {
+	align-items: center;
+	display: flex;
+	font-size: 1rem;
+}
+
+nav [slot='open'] {
+	background: unset;
+	border: 0;
+	gap: 1rem;
+	padding: 0;
+}
+
+nav [slot='open'] cuick-icon {
+	width: 1.5rem;
+}
+
+nav [slot='close'] {
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+}
+
+body > cuick-sidebar {
+	display: none;
+}
+
+nav > cuick-dialog {
+	--dialog-border-radius: 0;
+	--dialog-padding: 0;
+	--dialog-width: 12rem;
+}
+
+nav > cuick-dialog > cuick-sidebar {
+	height: 100%;
+}
+
+@media (min-width: 1024px) {
+	nav > cuick-dialog {
+		display: none;
+	}
+
+	body > cuick-sidebar {
+		display: block;
+		height: 100%;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: 12rem;
+	}
+
+	nav,
+	main {
+		margin-left: 12rem;
+		width: calc(100% - 12rem);
+	}
+}
+
+.logo {
+	color: inherit;
+	display: block;
+	font-size: 3rem;
+	line-height: 1;
+	padding: 1rem;
+	text-decoration: none;
+}
+
+.logo,
+h1 {
+	font-family: 'Cairo Play', sans-serif;
+	line-height: 1;
+}
+
+h1 {
+	font-size: 3rem;
+	margin: 2rem 0 1.5rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1;
+	margin: 1em 0 1rem;
+}
+
+a,
+p,
+ol,
+ul {
+	line-height: 1.5;
+}
+
+ul {
+	list-style: none;
+	padding: 0 0 0 1em;
+}
+
+ul li::before {
+	background: rgb(249 27 39);
+	content: '';
+	display: inline-block;
+	height: 0.33rem;
+	left: -0.5em;
+	position: relative;
+	top: -0.2em;
+	transform: skewX(-12deg);
+	width: 0.33em;
+}
