@@ -3,15 +3,15 @@ import cuick, { css, html } from '../cuick.js'
 export default cuick({
 	tag: 'youtube',
 	loaded: false,
-	props: { vid: 'kJQP7kiw5Fk' },
-	template({ loaded, vid }) {
+	props: { videoId: 'kJQP7kiw5Fk' },
+	template({ loaded, videoId }) {
 		return !loaded
 			? html`
 					<button
 						aria-label="Play Video"
 						@click=${() => (this.loaded = true)}
 						part="button"
-						style=${`background-image: url(https://img.youtube.com/vi/${vid}/hqdefault.jpg)`}
+						style=${`background-image: url(https://img.youtube.com/vi/${videoId}/hqdefault.jpg)`}
 					>
 						<svg part="icon" version="1.1" viewBox="0 0 68 48">
 							<path

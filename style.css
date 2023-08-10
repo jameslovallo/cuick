@@ -91,6 +91,13 @@ nav > cuick-dialog > cuick-sidebar {
 	}
 }
 
+cuick-app {
+	display: block;
+	margin: 0 auto;
+	max-width: 80ch;
+	padding: 0 1rem 3rem;
+}
+
 .logo {
 	color: inherit;
 	display: block;

@@ -43,9 +43,6 @@ export default cuick({
 	styles: css`
 		:host {
 			display: block;
-			margin: 0 auto;
-			max-width: 80ch;
-			padding: 0 1rem 3rem;
 		}
 	`,
 })
