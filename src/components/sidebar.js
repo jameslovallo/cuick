@@ -15,6 +15,7 @@ cuick({
 	},
 	template({ currentPath }) {
 		return html`<slot></slot>
+			<p>Components</p>
 			<ul>
 				${componentNames.map((name) => {
 					const href = `/stories/${name}`
@@ -43,6 +44,10 @@ cuick({
 			background: var(--sidebar-background-color);
 			display: block;
 			padding: 1rem 0;
+		}
+		p {
+			font-weight: bold;
+			margin: 0 1rem 0.5rem;
 		}
 		ul {
 			list-style: none;

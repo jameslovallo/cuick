@@ -100,6 +100,14 @@ nav > cuick-dialog > cuick-sidebar {
 	text-decoration: none;
 }
 
+.logo:visited {
+	color: inherit;
+}
+
+.logo:hover {
+	color: dodgerblue;
+}
+
 .logo,
 h1 {
 	font-family: 'Cairo Play', sans-serif;
