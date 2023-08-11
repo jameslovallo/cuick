@@ -7,7 +7,9 @@ export default cuick({
 	props: { label: 'Click me', content: 'Content' },
 	toggleAccordion(e) {
 		e.preventDefault()
-		const contentHeight = this.root.querySelector('slot').offsetHeight
+		const contentHeight = this.root.querySelector(
+			'[part=content] slot'
+		).offsetHeight
 		if (!this.open) {
 			this.open = true
 			this.maxHeight = contentHeight + 'px'
@@ -20,7 +22,7 @@ export default cuick({
 				class=${open && maxHeight === '0' ? 'closing' : null}
 			>
 				<summary @click=${(e) => this.toggleAccordion(e)}>
-					${label}
+					<slot name="summary">${label}</slot>
 					<svg viewBox="0 0 24 24">
 						<path
 							d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
@@ -91,7 +93,7 @@ export default cuick({
 			overflow: hidden;
 			transition: ease-out max-height 0.33s;
 		}
-		slot {
+		[part='content'] slot {
 			display: block;
 			padding: var(--accordion-padding);
 		}

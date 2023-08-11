@@ -10,12 +10,12 @@ body {
 }
 
 nav {
+	align-items: center;
 	display: flex;
 	gap: 1rem;
-	padding: 1rem;
-	position: relative;
+	height: 3.5rem;
+	padding: 0 1rem;
 	width: 100%;
-	z-index: 1;
 }
 
 nav a {
@@ -98,12 +98,17 @@ cuick-app {
 	padding: 0 1rem 3rem;
 }
 
+cuick-dialog:not(:defined) {
+	display: none;
+}
+
 .logo {
 	color: inherit;
 	display: block;
 	font-size: 3rem;
 	line-height: 1;
 	padding: 1rem;
+	position: relative;
 	text-decoration: none;
 }
 
@@ -118,21 +123,25 @@ cuick-app {
 .logo,
 h1 {
 	font-family: 'Cairo Play', sans-serif;
-	line-height: 1;
 }
 
-h1 {
-	font-size: 3rem;
-	margin: 2rem 0 1.5rem;
-}
-
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
 	line-height: 1;
-	margin: 1em 0 1rem;
+	margin: 1rem 0;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h1,
+h2 {
+	margin-top: 2rem;
 }
 
 a,
