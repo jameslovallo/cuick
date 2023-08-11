@@ -1,9 +1,7 @@
 cuick({
 	tag: 'i18n-nav',
-	setup() {
-		this.nav = this.context('i18n').t().nav
-	},
-	template({ nav: { home, about, contact } }) {
+	template() {
+		const { home, about, contact } = this.context('i18n').t().nav
 		return html`<nav>
 			<a>${home}</a>
 			<a>${about}</a>

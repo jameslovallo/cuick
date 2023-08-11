@@ -48,9 +48,7 @@
 				tag: 'i18n-nav',
 				template() {
 					const i18n = this.context('i18n')
-					const {
-						nav: { home, about, contact },
-					} = i18n.t()
+					const { home, about, contact } = i18n.t().nav
 					return html`
 						<nav>
 							<a>${home}</a>

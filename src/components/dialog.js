@@ -45,7 +45,7 @@ export default cuick({
 			--dialog-color: currentcolor;
 			--dialog-border: none;
 			--dialog-border-radius: 1rem;
-			// prettier-ignore
+			/* prettier-ignore */
 			--dialog-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
 			--dialog-padding: 1rem;
 			--dialog-height: unset;

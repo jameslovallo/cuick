@@ -111,13 +111,9 @@ export default function cuick(options) {
 					set: (v) => {
 						if (type === 'boolean') {
 							handleBool(v)
-						} else {
-							if (options && !options.includes(v)) {
-								console.error(
-									`Value '${v}' cannot be assigned to prop '${key}'`
-								)
-							} else this.setAttribute(kebab, v)
-						}
+						} else if (options && !options.includes(v)) {
+							console.error(`Value '${v}' cannot be assigned to prop '${key}'`)
+						} else this.setAttribute(kebab, v)
 					},
 				})
 			})
