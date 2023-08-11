@@ -14,7 +14,10 @@ body {
 @media (prefers-color-scheme: dark) {
 	:root {
 		--theme-background-color: #111;
-		--surface-background-color: #1a1a1a;
+		--surface-background-color: #171a1f;
+	}
+	cuick-story {
+		--story-background-color: var(--surface-background-color);
 	}
 }
 
