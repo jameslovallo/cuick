@@ -1,10 +1,10 @@
 {
 	"name": "cuick",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Write custom elements the cuick way.",
 	"type": "module",
-	"main": "src/index.js",
-	"module": "src/index.js",
+	"main": "src/cuick.js",
+	"module": "src/cuick.js",
 	"scripts": {
 		"dev": "npx browser-sync start . -s --files \"**/*.html, **/*.css, **/*.js, **/*.md\" --single"
 	},
