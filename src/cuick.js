@@ -4,10 +4,13 @@ export { camelToKebab, css, html, svg }
 
 export default function cuick(options) {
 	const { shadow, props } = options
+
 	let { tag } = options
 	if (!tag.includes('-')) tag = 'cuick-' + tag
+
 	const update = new Event('update')
 	const propNames = Object.keys(props || {})
+
 	const specialKeys = [
 		'tag',
 		'shadow',
@@ -37,6 +40,7 @@ export default function cuick(options) {
 			if (typeof this.inersected === 'function') this.handleIntersect()
 			if (typeof this.resized === 'function') this.handleResize()
 		}
+
 		debounce(fn) {
 			var timeout
 			return function () {
@@ -44,11 +48,13 @@ export default function cuick(options) {
 				timeout = requestAnimationFrame(() => fn.apply(this, arguments))
 			}
 		}
+
 		connectedCallback() {
 			this.addEventListener('update', this.debounce(this.render))
 			this.setup && this.setup()
 			this.dispatchEvent(update)
 		}
+
 		defineProps() {
 			propNames.forEach((key) => {
 				let defaultValue, handler, options
@@ -111,12 +117,15 @@ export default function cuick(options) {
 				})
 			})
 		}
+
 		static get observedAttributes() {
 			return propNames.map((prop) => camelToKebab(prop))
 		}
+
 		attributeChangedCallback() {
 			this.dispatchEvent(update)
 		}
+
 		defineState() {
 			const reactive = (object) => {
 				if (object === null || typeof object !== 'object') {
@@ -157,6 +166,7 @@ export default function cuick(options) {
 				})
 			})
 		}
+
 		context(c) {
 			if (!this.__ctx) this.__ctx = {}
 			if (!this.__ctx[c]) {
@@ -175,6 +185,7 @@ export default function cuick(options) {
 				return this.__ctx[c]
 			} else return this.__ctx[c]
 		}
+
 		async render() {
 			if (this.template || this.fetchTemplate) {
 				const template = this.fetchTemplate
@@ -196,6 +207,7 @@ export default function cuick(options) {
 					this.root.innerHTML = compiled + style
 				})
 		}
+
 		handleIntersect() {
 			new IntersectionObserver(
 				(entries) => {
@@ -211,6 +223,7 @@ export default function cuick(options) {
 				}
 			).observe(this)
 		}
+
 		handleResize() {
 			new ResizeObserver(() =>
 				requestAnimationFrame(() => this.resized(Math.round(this.clientWidth)))

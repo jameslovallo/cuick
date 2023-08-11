@@ -6,6 +6,7 @@ import counter from './counter.js'
 import dialog from './dialog.js'
 import forecast from './forecast.js'
 import icon from './icon.js'
+import markdown from './markdown.js'
 import './story.js'
 import video from './video.js'
 import youtube from './youtube.js'
@@ -19,6 +20,7 @@ const components = {
 	dialog,
 	forecast,
 	icon,
+	markdown,
 	video,
 	youtube,
 }
