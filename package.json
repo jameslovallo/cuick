@@ -1,6 +1,6 @@
 {
 	"name": "cuick",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Write custom elements the cuick way.",
 	"type": "module",
 	"main": "src/index.js",
