@@ -6,7 +6,7 @@ export default cuick({
 	tag: 'icon',
 	props: { icon: 'cat' },
 	render() {
-		fetch(`//unpkg.com/@mdi/svg@7.2.96/svg/${this.icon}.svg`)
+		fetch(`//unpkg.com/@mdi/svg@7.2.96/svg/${this.icon.toLowerCase()}.svg`)
 			.then((res) => res.text())
 			.then((mdi) => {
 				this.root.innerHTML = `
