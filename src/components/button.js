@@ -50,12 +50,13 @@ export default cuick({
 			position: absolute;
 			top: 0;
 			width: 100%;
-			z-index: -1;
 		}
 		slot {
 			align-items: center;
 			display: flex;
 			gap: 0.25rem;
+			position: relative;
+			z-index: 1;
 		}
 		.small slot::slotted(*) {
 			width: 1rem;

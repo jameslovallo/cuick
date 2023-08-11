@@ -4,16 +4,30 @@ export default cuick({
 	tag: 'app',
 	shadow: false,
 	pageRoot: '/pages',
-	fetch(page) {
-		fetch(this.pageRoot + page + '/index.html')
-			.then((res) => res.text())
-			.then((html) => {
-				history.pushState({ html }, '', page)
+	async fetch(page) {
+		try {
+			const response = await fetch(this.pageRoot + page + '/index.html')
+			const { status } = await response
+			const html = await response.text()
+			history.pushState({ html }, '', page)
+			if (status === 200) {
 				this.innerHTML = html
 				this.handleScripts()
 				this.handleLinks(this)
 				this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
-			})
+			} else {
+				const errorMessage = html
+					.split('<body>')[1]
+					.split('</body>')[0]
+					.replace(this.pageRoot, '')
+				this.innerHTML = `
+					<h1>Error ${status}</h1>
+					${errorMessage}
+				`
+			}
+		} catch (error) {
+			console.log(error)
+		}
 	},
 	handleLinks(target) {
 		const links = target.querySelectorAll('a')

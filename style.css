@@ -1,19 +1,35 @@
-:root,
-html,
-body {
+:root {
+	--theme-background-color: #fff;
+	--theme-primary: dodgerblue;
+	--surface-background-color: #fafafa;
+	background-color: var(--theme-background-color);
+	color-scheme: dark light;
 	font-family: sans-serif;
+}
+
+body {
 	margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--theme-background-color: #111;
+		--surface-background-color: #1a1a1a;
+	}
 }
 
 * {
 	box-sizing: border-box;
 }
 
+/* nav */
+
 nav {
 	align-items: center;
 	display: flex;
 	gap: 1rem;
 	height: 3.5rem;
+	justify-content: flex-end;
 	padding: 0 1rem;
 	width: 100%;
 }
@@ -23,13 +39,9 @@ nav a {
 	text-decoration: none;
 }
 
-nav a:first-of-type {
-	margin-left: auto;
-}
-
 nav a:hover,
 nav [slot='open']:hover {
-	color: dodgerblue;
+	color: var(--theme-primary);
 }
 
 nav a,
@@ -56,28 +68,35 @@ nav [slot='close'] {
 	top: 0.5rem;
 }
 
-body > cuick-sidebar {
-	display: none;
-}
-
 nav > cuick-dialog {
 	--dialog-border-radius: 0;
 	--dialog-padding: 0;
 	--dialog-width: 12rem;
+	margin-right: auto;
 }
 
-nav > cuick-dialog > cuick-sidebar {
-	height: 100%;
+nav > cuick-dialog:not(:defined) {
+	display: none;
 }
+
+/* sidebar */
+
+cuick-sidebar {
+	background: var(--surface-background-color);
+	display: block;
+	height: 100%;
+	padding: 1rem 0;
+}
+
+body > cuick-sidebar {
+	display: none;
+}
+
+/* desktop */
 
 @media (min-width: 1024px) {
-	nav > cuick-dialog {
-		display: none;
-	}
-
 	body > cuick-sidebar {
 		display: block;
-		height: 100%;
 		left: 0;
 		position: fixed;
 		top: 0;
@@ -89,7 +108,13 @@ nav > cuick-dialog > cuick-sidebar {
 		margin-left: 12rem;
 		width: calc(100% - 12rem);
 	}
+
+	nav > cuick-dialog {
+		display: none;
+	}
 }
+
+/* app */
 
 cuick-app {
 	display: block;
@@ -98,35 +123,7 @@ cuick-app {
 	padding: 0 1rem 3rem;
 }
 
-cuick-dialog:not(:defined) {
-	display: none;
-}
-
-cuick-sidebar .logo {
-	font-size: 2rem;
-	padding: 0 1rem 2rem;
-}
-
-a.logo {
-	color: inherit;
-	display: block;
-	text-decoration: none;
-}
-
-a.logo:visited {
-	color: inherit;
-}
-
-.logo:hover {
-	color: dodgerblue;
-}
-
-.logo,
-h1,
-.angled {
-	font-family: 'Cairo Play', sans-serif;
-	line-height: 1;
-}
+/* typography */
 
 h1,
 h2,
@@ -175,6 +172,36 @@ ul li::before {
 	transform: skewX(-12deg);
 	width: 0.38em;
 }
+
+.logo,
+h1,
+.angled {
+	font-family: 'Cairo Play', sans-serif;
+	line-height: 1;
+}
+
+/* logo */
+
+cuick-sidebar .logo {
+	font-size: 2rem;
+	padding: 0 1rem 2rem;
+}
+
+a.logo {
+	color: inherit;
+	display: block;
+	text-decoration: none;
+}
+
+a.logo:visited {
+	color: inherit;
+}
+
+a.logo:hover {
+	color: dodgerblue;
+}
+
+/* home */
 
 .angled {
 	color: inherit;

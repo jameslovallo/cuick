@@ -1,5 +1,5 @@
 import { highlightElement } from 'https://cdn.skypack.dev/prismjs@1.29.0'
-import cuick, { camelToKebab, css, html } from '../cuick.js'
+import cuick, { camelToKebab, css } from '../cuick.js'
 
 cuick({
 	tag: 'story',
@@ -121,33 +121,49 @@ cuick({
 	},
 	styles: css`
 		:host {
-			--canvas-max-height: unset;
+			--story-color: inherit;
+			--story-background-color: #fafafa;
+			--story-divider-color: #eee;
+			--story-canvas-background-color: white;
+			--story-canvas-color: inherit;
+			--story-canvas-height: unset;
+			background-color: var(--story-background-color);
+			color: var(--story-color);
 			border-radius: 0.25rem;
 			box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
 				rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
 			display: block;
 			overflow: hidden;
 		}
+		@media (prefers-color-scheme: dark) {
+			:host {
+				--story-color: inherit;
+				--story-background-color: #1a1a1a;
+				--story-canvas-background-color: transparent;
+				--story-canvas-color: inherit;
+				--story-divider-color: #333;
+			}
+		}
 		slot {
+			background-color: var(--story-canvas-background-color);
+			color: var(--story-canvas-color);
 			display: block;
-			max-height: var(--canvas-max-height);
+			height: var(--story-canvas-height);
 			overflow: auto;
 			padding: 1rem;
 		}
 		label {
 			align-items: center;
-			background: #fafafa;
-			border-top: 1px solid #eee;
+			border-top: 1px solid var(--story-divider-color);
 			display: flex;
 			justify-content: space-between;
 			padding: 0.75rem;
 		}
 		input,
 		select {
-			background: white;
 			border: none;
 			border-radius: 1rem;
-			box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+			box-shadow: inset 0 0 2px rgb(125, 125, 125);
 			display: block;
 			margin: 0;
 			padding: 0.5rem;
@@ -200,7 +216,7 @@ cuick({
 			width: 60px;
 		}
 		input[type='checkbox']:checked:before {
-			color: dodgerblue;
+			color: var(--story-primary, dodgerblue);
 			content: 'true';
 			margin-left: 38px;
 		}

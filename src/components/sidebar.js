@@ -35,16 +35,6 @@ cuick({
 			</ul>`
 	},
 	styles: css`
-		:host {
-			--sidebar-background-color: #fafafa;
-			--sidebar-color: currentcolor;
-			--sidebar-link-color: currentcolor;
-			--sidebar-link-active-color: dodgerblue;
-			--sidebar-link-hover-background-color: #eee;
-			background: var(--sidebar-background-color);
-			display: block;
-			padding: 1rem 0;
-		}
 		p {
 			font-weight: bold;
 			margin: 0 1rem 0.5rem;
@@ -54,19 +44,27 @@ cuick({
 			margin: 0;
 			padding: 0;
 			& a {
-				color: var(--sidebar-link-color);
+				color: currentColor;
 				display: block;
 				padding: 0.5rem 1rem;
+				position: relative;
 				text-decoration: none;
-				&:hover,
-				&.active {
-					background: var(--sidebar-link-hover-background-color);
+				&:hover:before,
+				&.active:before {
+					content: '';
+					height: 100%;
+					left: 0;
+					opacity: 0.1;
+					position: absolute;
+					top: 0;
+					width: 100%;
+					background: var(--theme-primary);
 				}
 				&.active {
-					color: var(--sidebar-link-active-color);
+					color: var(--theme-primary);
 				}
 				&:active {
-					background: var(--sidebar-link-active-color);
+					background: var(--theme-primary);
 					color: white;
 				}
 			}
