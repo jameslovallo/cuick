@@ -2,32 +2,6 @@ import { highlightElement } from 'https://cdn.skypack.dev/prismjs@1.29.0'
 import cuick, { camelToKebab, css, html } from '../cuick.js'
 
 cuick({
-	tag: 'demo',
-	props: {
-		string: 'Hi there',
-		number: 2,
-		boolean: false,
-		array: ['one', 'two', 'three'],
-		numberArray: [1, 2, 3, 4],
-		object: {
-			default: 3,
-			options: [1, 2, 3, 4, 5, 6],
-			handler: (v) => Number(v) + 2,
-		},
-	},
-	template({ string, number, boolean, array, numberArray, object }) {
-		return html`
-			<p>string: ${string}</p>
-			<p>number: ${number} + 3 = ${number + 3}</p>
-			<p>boolean: ${boolean}</p>
-			<p>array: ${array}</p>
-			<p>numberArray: ${numberArray}</p>
-			<p>object: ${object}</p>
-		`
-	},
-})
-
-cuick({
 	tag: 'story',
 	props: { element: '' },
 	render() {
@@ -147,7 +121,7 @@ cuick({
 	},
 	styles: css`
 		:host {
-			--canvas-max-height: 300px;
+			--canvas-max-height: unset;
 			border-radius: 0.25rem;
 			box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
 				rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
