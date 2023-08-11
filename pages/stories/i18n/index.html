@@ -1,0 +1,88 @@
+<h1>i18n</h1>
+
+<cuick-story>
+	<cuick-i18n>
+		<i18n-demo-nav></i18n-demo-nav>
+		<!--
+			Assign Languages
+		-->
+		<script>
+			const i18n = document.querySelector('cuick-i18n')
+			i18n.languages.en = {
+				label: 'English',
+				nav: {
+					home: 'Home',
+					about: 'About',
+					contact: 'Contact Us',
+				},
+			}
+			i18n.languages.es = {
+				label: 'Español',
+				nav: {
+					home: 'Inicio',
+					about: 'Acerca de',
+					contact: 'Contáctanos',
+				},
+			}
+			i18n.languages.fr = {
+				label: 'French',
+				nav: {
+					home: 'Accueil',
+					about: 'À Propos',
+					contact: 'Contactez-Nous',
+				},
+			}
+		</script>
+		<!--
+			Use translations with Context Api
+		-->
+		<script type="module">
+			import cuick, { css, html } from '/src/cuick.js'
+
+			cuick({
+				tag: 'i18n-demo-nav',
+				template() {
+					const i18n = this.context('i18n')
+					const {
+						nav: { home, about, contact },
+					} = i18n.t()
+					return html`
+						<nav>
+							<a>${home}</a>
+							<a>${about}</a>
+							<a>${contact}</a>
+							<select
+								@change=${(e) => {
+									i18n.selectedLanguage = e.target.value
+								}}
+							>
+								${Object.keys(i18n.languages).map((lang) => {
+									return html`
+										<option value=${lang}>${i18n.languages[lang].label}</option>
+									`
+								})}
+							</select>
+						</nav>
+					`
+				},
+				styles: css`
+					nav {
+						align-items: center;
+						background: #fafafa;
+						box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
+							rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+						display: inline-flex;
+						font-size: 14px;
+						gap: 1em;
+						padding: 0.5em;
+					}
+					@media (max-width: 480px) {
+						nav {
+							display: grid;
+						}
+					}
+				`,
+			})
+		</script>
+	</cuick-i18n>
+</cuick-story>

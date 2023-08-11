@@ -1,7 +1,8 @@
-import cuick, { css, html } from '../cuick.js'
+import cuick from '../cuick.js'
 
 export default cuick({
 	tag: 'app',
+	shadow: false,
 	pageRoot: '/pages',
 	fetch(page) {
 		fetch(this.pageRoot + page + '/index.html')
@@ -9,6 +10,7 @@ export default cuick({
 			.then((html) => {
 				history.pushState({ html }, '', page)
 				this.innerHTML = html
+				this.handleScripts()
 				this.handleLinks(this)
 				this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
 			})
@@ -25,6 +27,17 @@ export default cuick({
 			}
 		})
 	},
+	handleScripts() {
+		const scripts = this.querySelectorAll('script')
+		scripts.forEach((script) => {
+			const newScript = document.createElement('script')
+			const { src, type, textContent } = script
+			if (src) newScript.src = src
+			if (type) newScript.type = type
+			if (textContent) newScript.textContent = textContent
+			script.replaceWith(newScript)
+		})
+	},
 	setup() {
 		const { pathname } = location
 		this.fetch(pathname)
@@ -34,12 +47,4 @@ export default cuick({
 			this.handleLinks(this)
 		})
 	},
-	template() {
-		return html`<slot></slot>`
-	},
-	styles: css`
-		:host {
-			display: block;
-		}
-	`,
 })

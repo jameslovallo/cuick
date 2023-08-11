@@ -106,7 +106,6 @@ cuick-dialog:not(:defined) {
 	color: inherit;
 	display: block;
 	font-size: 3rem;
-	line-height: 1;
 	padding: 1rem;
 	position: relative;
 	text-decoration: none;
@@ -121,8 +120,10 @@ cuick-dialog:not(:defined) {
 }
 
 .logo,
-h1 {
+h1,
+.angled {
 	font-family: 'Cairo Play', sans-serif;
+	line-height: 1;
 }
 
 h1,
@@ -166,4 +167,23 @@ ul li::before {
 	top: -0.2em;
 	transform: skewX(-12deg);
 	width: 0.38em;
+}
+
+.angled {
+	color: inherit;
+	font-size: 1.1rem;
+	text-decoration-color: #e8423d;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+}
+
+.angled:hover {
+	color: inherit;
+	text-decoration-color: #e8423d;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 1px;
+}
+
+.angled + .angled {
+	margin-left: 0.5rem;
 }

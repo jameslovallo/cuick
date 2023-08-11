@@ -164,7 +164,11 @@ cuick({
 		pre[class*='language-'] {
 			border-radius: 0;
 			font-size: 0.75rem;
+			line-height: 2;
 			margin: 0;
+		}
+		pre[class*='language-'] {
+			padding: 0.5em 1em;
 		}
 		[part='code-actions'] {
 			align-items: center;
