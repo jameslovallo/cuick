@@ -74,7 +74,7 @@ export default cuick({
 			padding: 7px 8px 7px 16px;
 		}
 		.demo-box {
-			background: #fafafa;
+			background: rgba(125, 125, 125, 0.5);
 			box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
 				rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
 			height: 4rem;
