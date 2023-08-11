@@ -40,6 +40,8 @@ cuick({
 			margin: 0 1rem 0.5rem;
 		}
 		ul {
+			font-family: monospace;
+			font-size: 1rem;
 			list-style: none;
 			margin: 0;
 			padding: 0;
