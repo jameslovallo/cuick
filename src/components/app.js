@@ -2,13 +2,11 @@ import cuick, { css, html } from '../cuick.js'
 
 export default cuick({
 	tag: 'app',
+	pageRoot: '/pages',
 	fetch(page) {
-		fetch((page === '/' ? '' : '/pages' + page) + '/index.html')
+		fetch(this.pageRoot + page + '/index.html')
 			.then((res) => res.text())
 			.then((html) => {
-				if (page === '/') {
-					html = html.split('<cuick-app>')[1].split('</cuick-app>')[0].trim()
-				}
 				history.pushState({ html }, '', page)
 				this.innerHTML = html
 				this.handleLinks(this)
@@ -29,8 +27,7 @@ export default cuick({
 	},
 	setup() {
 		const { pathname } = location
-		let firstPage = pathname === '/' ? undefined : pathname
-		firstPage && firstPage !== '/' && this.fetch(firstPage)
+		this.fetch(pathname)
 		this.handleLinks(document)
 		addEventListener('popstate', (e) => {
 			this.innerHTML = e.state.html
