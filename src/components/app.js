@@ -26,7 +26,7 @@ export default cuick({
 				`
 			}
 		} catch (error) {
-			console.log(error)
+			console.error(error)
 		}
 	},
 	handleLinks(target) {
