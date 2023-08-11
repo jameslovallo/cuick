@@ -2,9 +2,12 @@
 
 <cuick-story>
 	<cuick-i18n>
-		<i18n-demo-nav></i18n-demo-nav>
+		<h2>Nav Component</h2>
+		<i18n-nav></i18n-nav>
+		<h2>Flag Component</h2>
+		<i18n-flag></i18n-flag>
 		<!--
-			Assign Languages
+			Assign languages
 		-->
 		<script>
 			const i18n = document.querySelector('cuick-i18n')
@@ -38,9 +41,11 @@
 		-->
 		<script type="module">
 			import cuick, { css, html } from '/src/cuick.js'
-
+			/*
+				The nav component
+			*/
 			cuick({
-				tag: 'i18n-demo-nav',
+				tag: 'i18n-nav',
 				template() {
 					const i18n = this.context('i18n')
 					const {
@@ -83,6 +88,31 @@
 					}
 				`,
 			})
+			/*
+				The flag component
+			*/
+			cuick({
+				tag: 'i18n-flag',
+				template() {
+					const flagPath = 'https://s2.svgbox.net/flags-hd.svg?ic='
+					let { selectedLanguage: lang } = this.context('i18n')
+					if (lang === 'en') lang = 'us'
+					return html`<img src=${flagPath + lang} />`
+				},
+				styles: css`
+					img {
+						display: block;
+						height: auto;
+						width: 100px;
+					}
+				`,
+			})
 		</script>
 	</cuick-i18n>
 </cuick-story>
+
+<style>
+	cuick-i18n h2:first-child {
+		margin-top: 0;
+	}
+</style>

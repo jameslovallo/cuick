@@ -1,5 +1,5 @@
 <h1>Cuick</h1>
-<p>Cuick is your Custom-Element UI Crafting Kit.</p>
+<p>Your new Custom-Element UI Crafting Kit.</p>
 
 <a href="/docs" class="angled">Get Started</a>
 <a href="/docs" class="angled">Components</a>
@@ -16,15 +16,32 @@
 	<li>App starter templates</li>
 </ul>
 
+<h2>Phenomenal DX</h2>
+<p>
+	<span class="logo">Cuick</span> was carefully designed to have the simplest DX
+	imaginable. The learning curve is miniscule, and you can choose to write
+	components with tagged template literals, regular JSX, or even handlebars. See
+	the <a href="/docs">docs</a> to learn more.
+</p>
+<cuick-code src="/src/components/counter.js"></cuick-code>
+
 <h2>Interactive Prototyping</h2>
 <p>
-	As you write a new component, wrap it in a
-	<code>&lt;cuick-story&gt;</code>
-	element. It creates an interactive playground by generating controls for your
-	component's props and any CSS variables defined in the
-	<code>:host</code> selector. This is also a fantastic way to document your
-	component, create user stories, and generate markup for your sites and apps.
+	<span class="logo">Cuick's</span> <code>&lt;cuick-story&gt;</code>
+	element autmatically generates a playground with controls for your component's
+	props and any CSS variables detected in the
+	<code>:host</code> selector. This is a fantastic way to generate living
+	documentation, user stories, or markup for your projects.
 </p>
 <cuick-story>
 	<cuick-badge></cuick-badge>
 </cuick-story>
+
+<h2>Context API</h2>
+<p>
+	<span class="logo">Cuick's</span> Context API makes it incredibly easy to
+	share state between parent and child components. This makes developing
+	otherwise complex features like app-wide i18n completely effortless. See the
+	<a href="/stories/i18n">i18n</a> component's page for a working demo.
+</p>
+<cuick-code src="/assets/context-i18n-nav.js"></cuick-code>

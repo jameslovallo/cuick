@@ -160,43 +160,6 @@ cuick({
 			overflow: auto;
 			padding: 1rem;
 		}
-		code[class*='language-'],
-		pre[class*='language-'] {
-			border-radius: 0;
-			font-size: 0.75rem;
-			line-height: 2;
-			margin: 0;
-		}
-		pre[class*='language-'] {
-			padding: 0.5em 1em;
-		}
-		[part='code-actions'] {
-			align-items: center;
-			background: rgb(40, 44, 52);
-			color: #ccc;
-			display: flex;
-			font-size: 0.75rem;
-			padding: 0.75rem 0.75rem 0;
-			justify-content: space-between;
-		}
-		[part='code-actions'] button {
-			align-items: center;
-			background: none;
-			border: 0;
-			color: inherit;
-			cursor: pointer;
-			display: flex;
-			font-size: 0.75rem;
-			gap: 0.5rem;
-		}
-		[part='code-actions'] button:hover {
-			color: white;
-		}
-		[part='code-actions'] svg {
-			display: block;
-			fill: currentColor;
-			width: 0.75rem;
-		}
 		label {
 			align-items: center;
 			background: #fafafa;
@@ -266,6 +229,43 @@ cuick({
 			color: dodgerblue;
 			content: 'true';
 			margin-left: 38px;
+		}
+		[part='code-actions'] {
+			align-items: center;
+			background: rgb(40, 44, 52);
+			color: #ccc;
+			display: flex;
+			font-size: 0.75rem;
+			padding: 0.75rem 0.75rem 0;
+			justify-content: space-between;
+		}
+		[part='code-actions'] button {
+			align-items: center;
+			background: none;
+			border: 0;
+			color: inherit;
+			cursor: pointer;
+			display: flex;
+			font-size: 0.75rem;
+			gap: 0.5rem;
+		}
+		[part='code-actions'] button:hover {
+			color: white;
+		}
+		[part='code-actions'] svg {
+			display: block;
+			fill: currentColor;
+			width: 0.75rem;
+		}
+		code[class*='language-'],
+		pre[class*='language-'] {
+			border-radius: 0;
+			font-size: 0.75rem;
+			line-height: 2;
+			margin: 0;
+		}
+		pre[class*='language-'] {
+			padding: 0.5em 1em 0.75rem;
 		}
 	`,
 })

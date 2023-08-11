@@ -7,7 +7,7 @@ export default cuick({
 		src: '',
 		alt: '',
 		size: { default: 'medium', options: ['small', 'medium', 'large'] },
-		shape: ['squared', 'rounded', 'circle'],
+		shape: ['circle', 'rounded', 'squared'],
 	},
 	template({ label, src, alt, size, shape }) {
 		const classList = [size, shape].join(' ')
@@ -56,11 +56,14 @@ export default cuick({
 			--avatar-size: 4rem;
 			--avatar-font-size: 2rem;
 		}
+		.circle {
+			--avatar-border-radius: 2rem;
+		}
 		.rounded {
 			--avatar-border-radius: 0.25rem;
 		}
-		.circle {
-			--avatar-border-radius: 2rem;
+		.squared {
+			--avatar-border-radius: 0;
 		}
 	`,
 })

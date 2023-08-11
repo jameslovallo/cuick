@@ -102,16 +102,18 @@ cuick-dialog:not(:defined) {
 	display: none;
 }
 
-.logo {
+cuick-sidebar .logo {
+	font-size: 2rem;
+	padding: 1rem;
+}
+
+a.logo {
 	color: inherit;
 	display: block;
-	font-size: 3rem;
-	padding: 1rem;
-	position: relative;
 	text-decoration: none;
 }
 
-.logo:visited {
+a.logo:visited {
 	color: inherit;
 }
 

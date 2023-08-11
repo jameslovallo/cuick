@@ -96,7 +96,12 @@ export default function cuick(options) {
 					}
 				}
 
-				const readAttr = () => this.getAttribute(kebab) || defaultValue
+				type === 'boolean' && handleBool(defaultValue)
+
+				const readAttr = () =>
+					type === 'boolean'
+						? this.hasAttribute(kebab) || defaultValue
+						: this.getAttribute(kebab) || defaultValue
 
 				Object.defineProperty(this, key, {
 					get: () => {
