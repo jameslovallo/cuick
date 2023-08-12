@@ -71,6 +71,10 @@ cuick({
 				controls.appendChild(label)
 
 				const control = document.createElement(controlType)
+				if (key.toLowerCase().endsWith('color')) {
+					inputType = 'color'
+					control.style.background = el[key]
+				}
 				if (inputType) control.type = inputType
 				if (inputType === 'checkbox') {
 					control.checked = el[key]
@@ -86,7 +90,12 @@ cuick({
 
 				if (config.default) control.value = config.default
 				label.appendChild(control)
-				control.addEventListener('input', (e) => handler(e.target))
+				control.addEventListener('input', (e) => {
+					handler(e.target)
+					if (inputType === 'color') {
+						e.target.style.background = e.target.value
+					}
+				})
 			})
 		}
 
@@ -95,28 +104,30 @@ cuick({
 				.split(':host {')[1]
 				.split('}')[0]
 				.match(/--[a-z-]+: .+?(?=;)/g)
-			const cssVars = styles.map((cssVar) => {
-				let [name, value] = cssVar.split(':')
-				return { name, value }
-			})
-			cssVars.forEach((cssVar) => {
-				const { name, value } = cssVar
-				const label = document.createElement('label')
-				label.innerText = name
-				controls.appendChild(label)
-				const input = document.createElement('input')
-				if (name.endsWith('color')) {
-					input.type = 'color'
-					input.style.background = value
-				}
-				input.value = value
-				input.addEventListener('input', (e) => {
-					el.style.setProperty(name, e.target.value)
-					e.target.style.background = e.target.value
-					highlightCode()
+			if (styles) {
+				const cssVars = styles.map((cssVar) => {
+					let [name, value] = cssVar.split(':')
+					return { name, value }
 				})
-				label.appendChild(input)
-			})
+				cssVars.forEach((cssVar) => {
+					const { name, value } = cssVar
+					const label = document.createElement('label')
+					label.innerText = name
+					controls.appendChild(label)
+					const input = document.createElement('input')
+					if (name.endsWith('color')) {
+						input.type = 'color'
+						input.style.background = value
+					}
+					input.value = value
+					input.addEventListener('input', (e) => {
+						el.style.setProperty(name, e.target.value)
+						e.target.style.background = e.target.value
+						highlightCode()
+					})
+					label.appendChild(input)
+				})
+			}
 		}
 	},
 	styles: css`
@@ -226,8 +237,8 @@ cuick({
 			color: #ccc;
 			display: flex;
 			font-size: 0.75rem;
-			padding: 0.75rem 0.75rem 0;
 			justify-content: space-between;
+			padding: 1em 1em 0;
 		}
 		[part='code-actions'] button {
 			align-items: center;
@@ -255,7 +266,7 @@ cuick({
 			margin: 0;
 		}
 		pre[class*='language-'] {
-			padding: 0.5em 1em 0.75rem;
+			padding: 1em;
 		}
 	`,
 })

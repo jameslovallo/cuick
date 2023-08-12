@@ -1,4 +1,4 @@
-import cuick, { html } from '../cuick.js'
+import cuick, { html } from '../../src/cuick.js'
 
 cuick({
 	tag: 'counter',

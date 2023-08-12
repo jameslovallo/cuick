@@ -1,4 +1,4 @@
-import { camelToKebab, css, fetchAndRender } from './utils/index.js'
+import { camelToKebab, css } from './utils/index.js'
 import { html, svg, render as uhtml } from '//cdn.skypack.dev/uhtml'
 export { camelToKebab, css, html, svg }
 
@@ -187,26 +187,29 @@ export default function cuick(options) {
 			} else return this.__ctx[c]
 		}
 
-		async render() {
-			if (this.template || this.fetchTemplate) {
-				const template = this.fetchTemplate
-					? await fetchAndRender(this.fetchTemplate())
-					: await this.template(this)
-				// prettier-ignore
-				const css = this.styles && html`<style>${this.styles}</style>`
-				uhtml(this.root, html`${template}${css}`)
-			}
-			this.hbs &&
-				import('//cdn.skypack.dev/handlebars').then(async (m) => {
-					const handlebars = m.default
-					const template =
-						typeof this.hbs === 'function'
-							? await this.hbs(handlebars)
-							: this.hbs
-					const compiled = m.default.compile(template, this)(this)
-					const style = this.styles ? `<style>${this.styles}</style>` : ''
-					this.root.innerHTML = compiled + style
-				})
+		uhtml() {
+			const template = this.template(this)
+			// prettier-ignore
+			const css = this.styles && html`<style>${this.styles}</style>`
+			uhtml(this.root, html`${template}${css}`)
+		}
+
+		handlebars() {
+			import('//cdn.skypack.dev/handlebars').then((m) => {
+				const handlebars = m.default
+				const html = (v) => v[0]
+				const compiled = m.default.compile(
+					this.hbs(html, handlebars),
+					this
+				)(this)
+				const style = this.styles ? `<style>${this.styles}</style>` : ''
+				this.root.innerHTML = compiled + style
+			})
+		}
+
+		render() {
+			if (this.template && typeof this.template === 'function') this.uhtml()
+			if (this.hbs && typeof this.hbs === 'function') this.handlebars()
 		}
 
 		handleIntersect() {

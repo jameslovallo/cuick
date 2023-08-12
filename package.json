@@ -1,7 +1,7 @@
 {
 	"name": "cuick",
 	"version": "0.0.2",
-	"description": "Write custom elements the cuick way.",
+	"description": "It's time to make web devopment fun again.",
 	"type": "module",
 	"main": "src/cuick.js",
 	"module": "src/cuick.js",
