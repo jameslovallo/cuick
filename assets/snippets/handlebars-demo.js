@@ -4,9 +4,9 @@ cuick({
 	tag: 'hbs',
 	props: {
 		author: '',
+		avatarSize: ['small', 'medium', 'large'],
 		avatarBackgroundColor: 'dodgerblue',
 		avatarColor: 'white',
-		avatarSize: ['small', 'medium', 'large'],
 	},
 	initials: '',
 	hbs(html) {
