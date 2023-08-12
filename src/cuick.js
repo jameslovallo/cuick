@@ -56,64 +56,46 @@ export default function cuick(options) {
 		}
 
 		defineProps() {
-			propNames.forEach((key) => {
-				let defaultValue, handler, options
-
-				const kebab = camelToKebab(key)
-
-				const propHandlers = {
-					boolean: () => this.hasAttribute(kebab),
-					number: (v) => Number(v),
-					string: (v) => v,
-				}
-
-				const config = this.props[key]
-				const type = typeof config
-				const isObj = type === 'object'
-
-				if (isObj) {
-					const isArr = Array.isArray(config)
-					if (isArr) {
-						options = config
+			propNames.forEach((prop) => {
+				const kebab = camelToKebab(prop)
+				const config = props[prop]
+				let configType = typeof config,
+					defaultValue = config?.default || config,
+					options,
+					controlType
+				if (configType === 'object') {
+					if (Array.isArray(config)) {
 						defaultValue = config[0]
-						handler = propHandlers[typeof defaultValue]
+						options = config
 					} else {
-						options = config.options
-						defaultValue = config?.default || (options && options[0])
-						handler =
-							config?.handler || propHandlers[typeof defaultValue] || ((v) => v)
-					}
-				} else {
-					defaultValue = config
-					handler = propHandlers[type]
-				}
-
-				const handleBool = (v) => {
-					if (v === true) {
-						this.setAttribute(kebab, '')
-					} else {
-						this.removeAttribute(kebab)
+						if (config.options) {
+							defaultValue = config?.default || config.options[0]
+							options = config.options
+						}
 					}
 				}
+				switch (typeof defaultValue) {
+					case 'string':
+						controlType = 'text'
+					case 'number':
+						controlType = 'number'
+					case 'boolean':
+						controlType = 'checkbox'
+				}
+				if (prop.toLowerCase().endsWith('color')) controlType = 'color'
+				if (options) controlType = 'select'
 
-				type === 'boolean' && handleBool(defaultValue)
-
-				const readAttr = () =>
-					type === 'boolean'
-						? this.hasAttribute(kebab) || defaultValue
-						: this.getAttribute(kebab) || defaultValue
-
-				Object.defineProperty(this, key, {
+				Object.defineProperty(this, prop, {
 					get: () => {
-						const v = readAttr()
-						return handler(v)
+						return configType === 'boolean'
+							? this.hasAttribute(kebab)
+							: this.getAttribute(kebab) || defaultValue
 					},
 					set: (v) => {
-						if (type === 'boolean') {
-							handleBool(v)
-						} else if (options && !options.includes(v)) {
-							console.error(`Value '${v}' cannot be assigned to prop '${key}'`)
-						} else this.setAttribute(kebab, v)
+						const isBool = configType === 'boolean'
+						v
+							? this.setAttribute(kebab, isBool ? '' : v || defaultValue)
+							: this.removeAttribute(v)
 					},
 				})
 			})
