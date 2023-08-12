@@ -17,10 +17,11 @@ export default function cuick(options) {
 		'props',
 		'setup',
 		'template',
+		'handlebars',
 		'styles',
-		'intersected',
-		'resized',
 		'render',
+		'onIntersect',
+		'onResize',
 	]
 
 	class c extends HTMLElement {
@@ -38,7 +39,7 @@ export default function cuick(options) {
 			if (propNames) this.defineProps()
 			this.defineState()
 			if (typeof this.inersected === 'function') this.handleIntersect()
-			if (typeof this.resized === 'function') this.handleResize()
+			if (typeof this.onResize === 'function') this.handleResize()
 		}
 
 		debounce(fn) {
@@ -199,7 +200,7 @@ export default function cuick(options) {
 				(entries) => {
 					entries.forEach((entry) => {
 						entry.isIntersecting &&
-							this.intersected(entry.intersectionRatio.toFixed(2))
+							this.onIntersect(entry.intersectionRatio.toFixed(2))
 					})
 				},
 				{
@@ -212,7 +213,7 @@ export default function cuick(options) {
 
 		handleResize() {
 			new ResizeObserver(() =>
-				requestAnimationFrame(() => this.resized(Math.round(this.clientWidth)))
+				requestAnimationFrame(() => this.onResize(Math.round(this.clientWidth)))
 			).observe(this)
 		}
 	}
