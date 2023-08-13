@@ -156,15 +156,7 @@ export default function cuick(options) {
 		context(c) {
 			if (!this.__ctx) this.__ctx = {}
 			if (!this.__ctx[c]) {
-				const closest = (selector, base = this) => {
-					function __closestFrom(el) {
-						if (!el || el === document || el === window) return null
-						let found = el.closest(selector)
-						return found ? found : __closestFrom(el.getRootNode().host)
-					}
-					return __closestFrom(base)
-				}
-				this.__ctx[c] = closest(`[context=${c}]`)
+				this.__ctx[c] = document.querySelector(`[context=${c}]`)
 				this.__ctx[c].addEventListener('update', () =>
 					this.dispatchEvent(update)
 				)
