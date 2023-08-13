@@ -1,6 +1,6 @@
 import { transform } from '//cdn.skypack.dev/nested-css-to-flat'
 
-const root = `* { box-sizing: border-box }`
+const reset = `* { box-sizing: border-box }`
 
 const light = {
 	themeBorder: '#eee',
@@ -23,9 +23,9 @@ const isDark = matchMedia('(prefers-color-scheme: dark)').matches
 const theme = isDark ? { ...light, ...dark } : light
 
 export default ([v]) => {
-	v = root + v
+	v = reset + v
 	Object.keys(theme).forEach((key) => {
 		v = v.replace(key, `var(--${key}, ${theme[key]})`)
 	})
-	return v.includes('& ') ? transform(v) : v
+	return v.includes('&') ? transform(v) : v
 }
