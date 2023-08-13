@@ -25,7 +25,7 @@ const theme = isDark ? { ...light, ...dark } : light
 export default ([v]) => {
 	v = reset + v
 	Object.keys(theme).forEach((key) => {
-		v = v.replace(key, `var(--${key}, ${theme[key]})`)
+		v = v.replaceAll(key, `var(--${key}, ${theme[key]})`)
 	})
 	return v.includes('&') ? transform(v) : v
 }
