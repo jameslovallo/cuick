@@ -1,21 +1,10 @@
 :root {
-	--theme-background-color: #fff;
-	--theme-primary: dodgerblue;
-	--surface-background-color: #fafafa;
-	background-color: var(--theme-background-color);
 	color-scheme: dark light;
 	font-family: sans-serif;
 }
 
 body {
 	margin: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--theme-background-color: #111;
-		--surface-background-color: #171a1f;
-	}
 }
 
 * {
@@ -41,7 +30,7 @@ nav a {
 
 nav a:hover,
 nav [slot='open']:hover {
-	color: var(--theme-primary);
+	color: dodgerblue;
 }
 
 nav a,
@@ -82,7 +71,7 @@ nav > cuick-dialog:not(:defined) {
 /* sidebar */
 
 cuick-sidebar {
-	background: var(--surface-background-color);
+	background: var(--theme-surface-background);
 	display: block;
 	height: 100%;
 	padding: 1rem 0;
