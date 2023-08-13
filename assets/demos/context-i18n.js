@@ -57,8 +57,8 @@ cuick({
 	styles: css`
 		nav {
 			align-items: center;
-			background: var(--theme-surface-background);
-			border: 1px solid var(--theme-border);
+			background: themeSurfaceBg;
+			border: 1px solid themeBorder;
 			box-shadow: var(--theme-surface-shadow);
 			display: inline-flex;
 			font-size: 14px;
@@ -83,7 +83,7 @@ cuick({
 	},
 	styles: css`
 		img {
-			border: 1px solid var(--theme-border);
+			border: 1px solid themeBorder;
 			display: block;
 			height: auto;
 			width: 100px;

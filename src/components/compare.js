@@ -31,8 +31,8 @@ export default cuick({
 		:host {
 			--compare-border-radius: 0.5rem;
 			--compare-divider-color: white;
-			--compare-button-background-color: white;
-			--compare-button-color: var(--theme-primary-background);
+			--compare-button-background-color: themePrimaryBg;
+			--compare-button-color: themePrimaryColor;
 			display: block;
 			position: relative;
 		}

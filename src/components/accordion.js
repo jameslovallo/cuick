@@ -43,12 +43,12 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--accordion-border-color: var(--theme-border);
+			--accordion-border-color: themeBorder;
 			--accordion-padding: 1rem;
-			--accordion-content-background-color: var(--theme-surface-background);
-			--accordion-content-color: var(--theme-surface-color);
-			--accordion-summary-background-color: var(--theme-surface-background);
-			--accordion-summary-color: var(--theme-surface-color);
+			--accordion-content-background-color: themeSurfaceBg;
+			--accordion-content-color: themeSurfaceColor;
+			--accordion-summary-background-color: themeSurfaceBg;
+			--accordion-summary-color: themeSurfaceColor;
 			border: 1px solid var(--accordion-border-color);
 			display: block;
 		}

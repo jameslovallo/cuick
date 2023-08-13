@@ -17,8 +17,8 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--avatar-background-color: var(--theme-primary-background);
-			--avatar-color: var(--theme-primary-color);
+			--avatar-background-color: themePrimaryBg;
+			--avatar-color: themePrimaryColor;
 			color: var(--avatar-color);
 			display: inline-block;
 		}

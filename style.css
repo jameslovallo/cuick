@@ -71,7 +71,6 @@ nav > cuick-dialog:not(:defined) {
 /* sidebar */
 
 cuick-sidebar {
-	background: var(--theme-surface-background);
 	display: block;
 	height: 100%;
 	padding: 1rem 0;

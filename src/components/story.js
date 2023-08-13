@@ -132,8 +132,8 @@ cuick({
 	},
 	styles: css`
 		:host {
-			--story-color: var(--theme-surface-color);
-			--story-background-color: var(--theme-surface-background);
+			--story-color: themeSurfaceColor;
+			--story-background-color: themeSurfaceBg;
 			--story-canvas-height: unset;
 			border: 1px solid var(--story-border-color);
 			color: var(--story-color);
@@ -145,7 +145,7 @@ cuick({
 		}
 		@media (prefers-color-scheme: dark) {
 			:host {
-				--story-border-color: var(--theme-border);
+				--story-border-color: themeBorder;
 			}
 		}
 		slot {

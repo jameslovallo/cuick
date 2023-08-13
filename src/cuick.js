@@ -1,8 +1,8 @@
-import { camelToKebab, css, setDefaultTheme } from './utils/index.js'
+import { camelToKebab, css } from './utils/index.js'
 import { html, svg, render as uhtml } from '//cdn.skypack.dev/uhtml'
 export { camelToKebab, css, html, svg }
 
-setDefaultTheme()
+// setDefaultTheme()
 
 export default function cuick(options) {
 	const { shadow, props } = options
