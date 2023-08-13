@@ -1,6 +1,4 @@
-/**
- * Assign languages
- */
+// Assign languages
 
 const i18n = document.querySelector('cuick-i18n')
 i18n.languages.en = {
@@ -28,9 +26,7 @@ i18n.languages.fr = {
 	},
 }
 
-/**
- * Reference translations using Context API
- */
+// Reference translations using Context API
 
 import cuick, { css, html } from '/src/cuick.js'
 
