@@ -132,13 +132,10 @@ cuick({
 	},
 	styles: css`
 		:host {
-			--story-color: inherit;
-			--story-background-color: #fafafa;
-			--story-divider-color: #eee;
-			--story-canvas-background-color: white;
-			--story-canvas-color: inherit;
+			--story-color: var(--theme-surface-color);
+			--story-background-color: var(--theme-surface-background);
 			--story-canvas-height: unset;
-			background-color: var(--story-background-color);
+			border: 1px solid var(--story-border-color);
 			color: var(--story-color);
 			border-radius: 0.25rem;
 			box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
@@ -148,24 +145,21 @@ cuick({
 		}
 		@media (prefers-color-scheme: dark) {
 			:host {
-				--story-color: inherit;
-				--story-background-color: #1a1a1a;
-				--story-canvas-background-color: transparent;
-				--story-canvas-color: inherit;
-				--story-divider-color: #333;
+				--story-border-color: var(--theme-border);
 			}
 		}
 		slot {
-			background-color: var(--story-canvas-background-color);
-			color: var(--story-canvas-color);
 			display: block;
 			height: var(--story-canvas-height);
 			overflow: auto;
 			padding: 1rem;
 		}
+		[part='controls'] {
+			background-color: var(--story-background-color);
+		}
 		label {
 			align-items: center;
-			border-top: 1px solid var(--story-divider-color);
+			border-top: 1px solid var(--story-border-color);
 			display: flex;
 			justify-content: space-between;
 			padding: 0.75rem;

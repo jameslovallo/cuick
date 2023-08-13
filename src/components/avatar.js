@@ -17,14 +17,13 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--avatar-background-color: dodgerblue;
-			--avatar-color: white;
+			--avatar-background-color: var(--theme-primary-background);
+			--avatar-color: var(--theme-primary-color);
 			color: var(--avatar-color);
 			display: inline-block;
 		}
 		img,
 		slot {
-			background: var(--avatar-background-color);
 			border-radius: var(--avatar-border-radius);
 			height: var(--avatar-size);
 			width: var(--avatar-size);
@@ -36,6 +35,7 @@ export default cuick({
 		}
 		slot {
 			align-items: center;
+			background: var(--avatar-background-color);
 			display: flex;
 			font-size: var(--avatar-font-size);
 			justify-content: center;

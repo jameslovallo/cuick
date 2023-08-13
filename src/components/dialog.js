@@ -41,12 +41,11 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--dialog-background-color: white;
-			--dialog-color: currentcolor;
+			--dialog-background-color: var(--theme-surface-background);
+			--dialog-color: var(--theme-surface-color);
 			--dialog-border: none;
 			--dialog-border-radius: 1rem;
-			/* prettier-ignore */
-			--dialog-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+			--dialog-box-shadow: var(--theme-surface-shadow);
 			--dialog-padding: 1rem;
 			--dialog-height: unset;
 			--dialog-width: unset;

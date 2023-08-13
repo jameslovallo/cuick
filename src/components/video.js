@@ -63,8 +63,8 @@ export default cuick({
 	styles: css`
 		:host {
 			--video-aspect-ratio: 16/9;
-			--video-button-background-color: dodgerblue;
-			--video-button-color: white;
+			--video-button-background-color: var(--theme-primary-background);
+			--video-button-color: var(--theme-primary-color);
 			aspect-ratio: var(--video-aspect-ratio);
 			display: block;
 			position: relative;

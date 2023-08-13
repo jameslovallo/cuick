@@ -32,7 +32,7 @@ export default cuick({
 			--compare-border-radius: 0.5rem;
 			--compare-divider-color: white;
 			--compare-button-background-color: white;
-			--compare-button-color: dodgerblue;
+			--compare-button-color: var(--theme-primary-background);
 			display: block;
 			position: relative;
 		}

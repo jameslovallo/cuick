@@ -58,13 +58,13 @@ cuick({
 					position: absolute;
 					top: 0;
 					width: 100%;
-					background: var(--theme-primary);
+					background: var(--theme-primary-background);
 				}
 				&.active {
-					color: var(--theme-primary);
+					color: var(--theme-primary-background);
 				}
 				&:active {
-					background: var(--theme-primary);
+					background: var(--theme-primary-background);
 					color: white;
 				}
 			}

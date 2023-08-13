@@ -20,8 +20,8 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--badge-background-color: dodgerblue;
-			--badge-color: white;
+			--badge-background-color: var(--theme-primary-background);
+			--badge-color: var(--theme-primary-color);
 			display: block;
 			position: relative;
 			width: max-content;
@@ -74,11 +74,16 @@ export default cuick({
 			padding: 7px 8px 7px 16px;
 		}
 		.demo-box {
-			background: rgba(125, 125, 125, 0.5);
+			background: var(--theme-surface-background);
 			box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
 				rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
 			height: 4rem;
 			min-width: 200px;
+		}
+		@media (prefers-color-scheme: dark) {
+			.demo-box {
+				border: 1px solid var(--theme-border);
+			}
 		}
 	`,
 })
