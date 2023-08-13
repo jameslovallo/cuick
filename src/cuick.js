@@ -1,8 +1,6 @@
-import { camelToKebab, css } from './utils/index.js'
+import { css, toKebab } from './utils/index.js'
 import { html, svg, render as uhtml } from '//cdn.skypack.dev/uhtml'
-export { camelToKebab, css, html, svg }
-
-// setDefaultTheme()
+export { css, html, svg, toKebab }
 
 export default function cuick(options) {
 	const { shadow, props } = options
@@ -60,7 +58,7 @@ export default function cuick(options) {
 
 		defineProps() {
 			propNames.forEach((prop) => {
-				const kebab = camelToKebab(prop)
+				const kebab = toKebab(prop)
 				const config = props[prop]
 				let configType = typeof config,
 					defaultValue = config?.default || config,
@@ -105,7 +103,7 @@ export default function cuick(options) {
 		}
 
 		static get observedAttributes() {
-			return propNames.map((prop) => camelToKebab(prop))
+			return propNames.map((prop) => toKebab(prop))
 		}
 
 		attributeChangedCallback() {

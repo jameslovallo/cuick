@@ -1,5 +1,5 @@
 import { highlightElement } from 'https://cdn.skypack.dev/prismjs@1.29.0'
-import cuick, { camelToKebab, css } from '../cuick.js'
+import cuick, { css, toKebab } from '../cuick.js'
 
 cuick({
 	tag: 'story',
@@ -42,7 +42,7 @@ cuick({
 
 		if (el.props) {
 			Object.keys(el.props).forEach((key) => {
-				const kebab = camelToKebab(key)
+				const kebab = toKebab(key)
 				const config = el.props[key]
 
 				let propType = typeof config,
