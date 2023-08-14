@@ -1,5 +1,23 @@
 import cuick from '../cuick.js'
 
+const page404 = `
+	<style>
+		html, body {
+			height: 100%;
+		}
+		main {
+			align-items: center;
+			display: flex;
+			height: 100%;
+			justify-content: center;
+			text-align: center;
+		}
+	</style>
+	<h1>Error 404</h1>
+	<p>Sorry, that page could not be found.</p>
+	<a href="/">Go Home</a>
+`
+
 export default cuick({
 	tag: 'app',
 	shadow: false,
@@ -16,13 +34,7 @@ export default cuick({
 					this.innerHTML = html
 					this.handleScripts()
 					this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
-				} else {
-					this.innerHTML = `
-					<h1>Error 404</h1>
-					<p>We couldn't find that page, please try again.</p>
-					<a href="/">Go Home</a>
-				`
-				}
+				} else this.innerHTML = page404
 				this.handleLinks(this)
 			} catch (error) {
 				console.error(error)
@@ -58,7 +70,10 @@ export default cuick({
 		this.loaded = true
 		this.handleLinks(document)
 		addEventListener('popstate', (e) => {
-			this.innerHTML = e.state.html
+			const {
+				state: { html },
+			} = e
+			this.innerHTML = html.includes('Cannot GET') ? page404 : html
 			this.handleLinks(this)
 		})
 	},
