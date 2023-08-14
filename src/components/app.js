@@ -8,22 +8,17 @@ export default cuick({
 		try {
 			const response = await fetch(this.pageRoot + page + '/index.html')
 			console.log(response)
-			const { status, url } = await response
+			const { status, redirected } = await response
 			const html = await response.text()
 			history.pushState({ html }, '', page)
-			if (status === 200 && url.includes(page)) {
+			if (status === 200 && redirected) {
 				this.innerHTML = html
 				this.handleScripts()
 				this.handleLinks(this)
 				this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
 			} else {
-				const errorMessage = html
-					.split('<body>')[1]
-					.split('</body>')[0]
-					.replace(this.pageRoot, '')
 				this.innerHTML = `
 					<h1>Error ${status}</h1>
-					${errorMessage}
 				`
 			}
 		} catch (error) {
