@@ -11,7 +11,7 @@ export default cuick({
 			const { status, redirected } = await response
 			const html = await response.text()
 			history.pushState({ html }, '', page)
-			if (status === 200 && redirected) {
+			if (status === 200 && !html.startsWith('<!DOCTYPE html>')) {
 				this.innerHTML = html
 				this.handleScripts()
 				this.handleLinks(this)
