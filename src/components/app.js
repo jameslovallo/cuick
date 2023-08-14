@@ -7,6 +7,7 @@ export default cuick({
 	async fetch(page) {
 		try {
 			const response = await fetch(this.pageRoot + page + '/index.html')
+			console.log(response)
 			const { status, url } = await response
 			const html = await response.text()
 			history.pushState({ html }, '', page)
