@@ -27,7 +27,11 @@ export default cuick({
 			<details class="surface">
 				<summary part="summary" @click=${(e) => this.toggleAccordion(e)}>
 					<slot name="summary">${label}</slot>
-					<svg viewBox="0 0 24 24" class=${open ? 'open' : 'closed'}>
+					<svg
+						part="indicator"
+						class=${open ? 'open' : 'closed'}
+						viewBox="0 0 24 24"
+					>
 						<path
 							d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
 						/>
