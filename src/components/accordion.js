@@ -7,36 +7,33 @@ export default cuick({
 	props: { label: 'Click me', content: 'Content' },
 	toggleAccordion(e) {
 		e.preventDefault()
-		const contentHeight = this.root.querySelector(
-			'[part=content] slot'
-		).offsetHeight
-		if (!this.open) {
+		const accordion = this.root.querySelector('details')
+		if (!accordion.open) {
+			accordion.open = true
 			this.open = true
-			this.maxHeight = contentHeight + 'px'
-		} else this.maxHeight = '0'
+			this.maxHeight = this.root.querySelector(
+				'[part=content] slot'
+			).offsetHeight
+		} else {
+			this.maxHeight = 0
+			this.open = false
+			setTimeout(() => {
+				accordion.open = false
+			}, 333)
+		}
 	},
 	template({ maxHeight, open, label, content }) {
-		const classList = [
-			'surface',
-			open && maxHeight === '0' ? 'closing' : null,
-		].join(' ')
 		return html`
-			<details open=${open ? '' : null} class=${classList}>
+			<details class="surface">
 				<summary part="summary" @click=${(e) => this.toggleAccordion(e)}>
 					<slot name="summary">${label}</slot>
-					<svg viewBox="0 0 24 24">
+					<svg viewBox="0 0 24 24" class=${open ? 'open' : 'closed'}>
 						<path
 							d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
 						/>
 					</svg>
 				</summary>
-				<div
-					part="content"
-					style=${`max-height: ${maxHeight}`}
-					@transitionEnd=${() => {
-						if (maxHeight === '0') this.open = false
-					}}
-				>
+				<div part="content" style=${`max-height: ${maxHeight}px`}>
 					<slot>${content}</slot>
 				</div>
 			</details>
@@ -77,7 +74,7 @@ export default cuick({
 			transition: transform 0.33s;
 			width: 1rem;
 		}
-		details[open]:not(.closing) svg {
+		summary svg.open {
 			transform: scale(1.5) rotate(180deg);
 		}
 		[part='content'] {
