@@ -5,7 +5,6 @@ import button from './button.js'
 import code from './code.js'
 import compare from './compare.js'
 import dialog from './dialog.js'
-import forecast from './forecast.js'
 import i18n from './i18n.js'
 import icon from './icon.js'
 import './story.js'
@@ -20,7 +19,6 @@ const components = {
 	code,
 	compare,
 	dialog,
-	forecast,
 	icon,
 	i18n,
 	video,
