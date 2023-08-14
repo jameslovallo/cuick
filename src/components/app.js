@@ -9,7 +9,6 @@ export default cuick({
 		if (!this.loaded || page !== location.pathname) {
 			try {
 				const response = await fetch(this.pageRoot + page + '/index.html')
-				console.log(response)
 				const { status } = await response
 				const html = await response.text()
 				history.pushState({ html }, '', page)

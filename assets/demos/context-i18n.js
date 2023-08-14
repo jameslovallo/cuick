@@ -58,8 +58,8 @@ cuick({
 		nav {
 			align-items: center;
 			background: themeSurfaceBg;
-			border: 1px solid themeBorder;
-			box-shadow: var(--theme-surface-shadow);
+			border: themeSurfaceBorder;
+			box-shadow: themeSurfaceShadow;
 			display: inline-flex;
 			font-size: 14px;
 			gap: 1em;
