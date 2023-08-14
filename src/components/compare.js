@@ -31,8 +31,11 @@ export default cuick({
 		:host {
 			--compare-border-radius: 0.5rem;
 			--compare-divider-color: white;
-			--compare-button-background-color: themePrimaryBg;
-			--compare-button-color: themePrimaryColor;
+			--compareButtonBg: var(--themePrimaryBg, var(--defaultPrimaryBg));
+			--compareButtonColor: var(
+				--themePrimaryColor,
+				var(--defaultPrimaryColor)
+			);
 			display: block;
 			position: relative;
 		}
@@ -97,7 +100,7 @@ export default cuick({
 		}
 		button {
 			align-items: center;
-			background: var(--compare-button-background-color);
+			background: var(--compareButtonBg);
 			border-radius: 2rem;
 			border: 0;
 			box-shadow: 0 0 5px black;
@@ -112,7 +115,7 @@ export default cuick({
 			width: 2rem;
 		}
 		button svg {
-			fill: var(--compare-button-color);
+			fill: var(--compareButtonColor);
 			width: 24px;
 		}
 	`,

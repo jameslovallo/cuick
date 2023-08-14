@@ -25,15 +25,15 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--button-color: themePrimaryBg;
-			--button-filled-color: themePrimaryColor;
+			--buttonColor: var(--themePrimaryBg, var(--defaultPrimaryBg));
+			--buttonFilledColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
 			display: inline-block;
 		}
 		a,
 		button {
 			background: transparent;
 			border: none;
-			color: var(--button-color);
+			color: var(--buttonColor);
 			cursor: pointer;
 			font-size: 14px;
 			line-height: 1;
@@ -44,7 +44,7 @@ export default cuick({
 		a:before,
 		button:before {
 			content: '';
-			background-color: var(--button-color);
+			background-color: var(--buttonColor);
 			height: 100%;
 			left: 0;
 			position: absolute;
@@ -115,7 +115,7 @@ export default cuick({
 			border-radius: 3rem;
 		}
 		.filled {
-			color: var(--button-filled-color);
+			color: var(--buttonFilledColor);
 		}
 		.filled:hover:before {
 			opacity: 0.8;
@@ -125,7 +125,7 @@ export default cuick({
 		}
 		.outlined,
 		.subtle {
-			box-shadow: inset 0 0 0 1px var(--button-color);
+			box-shadow: inset 0 0 0 1px var(--buttonColor);
 		}
 		.outlined:hover:before,
 		.text:hover:before {

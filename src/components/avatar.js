@@ -17,9 +17,9 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--avatar-background-color: themePrimaryBg;
-			--avatar-color: themePrimaryColor;
-			color: var(--avatar-color);
+			--avatarBg: var(--themePrimaryBg, var(--defaultPrimaryBg));
+			--avatarColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
+			color: var(--avatarColor);
 			display: inline-block;
 		}
 		img,
@@ -35,7 +35,7 @@ export default cuick({
 		}
 		slot {
 			align-items: center;
-			background: var(--avatar-background-color);
+			background: var(--avatarBg);
 			display: flex;
 			font-size: var(--avatar-font-size);
 			justify-content: center;

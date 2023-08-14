@@ -11,24 +11,24 @@ export default cuick({
 	template({ href, label, target, variant }) {
 		const el = (slot) =>
 			href
-				? html`<a part=${variant} href=${href} target=${target}> ${slot} </a>`
+				? html`<a part=${variant} href=${href} target=${target}>${slot}</a>`
 				: html`<div part="${variant}">${slot}</div>`
 		return html`
-			<slot><div class="demo-box"></div></slot>
+			<slot><div class="demo-box surface"></div></slot>
 			${el(html`<span part="label">${label}</span>`)}
 		`
 	},
 	styles: css`
 		:host {
-			--badge-background-color: themePrimaryBg;
-			--badge-color: themePrimaryColor;
+			--badgeBgColor: var(--themePrimaryBg, var(--defaultPrimaryBg));
+			--badgeColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
 			display: block;
 			position: relative;
 			width: max-content;
 		}
 		[part='badge'],
 		[part='ribbon'] {
-			color: var(--badge-color);
+			color: var(--badgeColor);
 			font-size: 12px;
 			letter-spacing: 1px;
 			text-decoration: none;
@@ -36,7 +36,7 @@ export default cuick({
 		}
 		[part='badge'] {
 			align-items: center;
-			background: var(--badge-background-color);
+			background: var(--badgeBgColor);
 			border-radius: 12px;
 			display: flex;
 			height: 24px;
@@ -50,13 +50,13 @@ export default cuick({
 			margin: 0 6px;
 		}
 		[part='ribbon'] {
-			color: var(--badge-color);
+			color: var(--badgeColor);
 			position: absolute;
 			right: -8px;
 			top: 8px;
 		}
 		[part='ribbon']:before {
-			background: var(--badge-background-color);
+			background: var(--badgeBgColor);
 			clip-path: polygon(0 0, 0% 100%, 100% 0);
 			content: '';
 			filter: brightness(0.66);
@@ -67,16 +67,13 @@ export default cuick({
 			width: 8px;
 		}
 		[part='ribbon'] [part='label'] {
-			background: var(--badge-background-color);
+			background: var(--badgeBgColor);
 			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%);
 			display: block;
 			height: 100%;
 			padding: 7px 8px 7px 16px;
 		}
 		.demo-box {
-			background: themeSurfaceBg;
-			border: themeSurfaceBorder;
-			box-shadow: themeSurfaceShadow;
 			height: 4rem;
 			min-width: 200px;
 		}

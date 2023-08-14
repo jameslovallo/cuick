@@ -23,12 +23,18 @@ export default cuick({
 		)
 	},
 	template({ open, variant, enterFrom }) {
-		const classList = [variant, enterFrom, open ? 'open' : 'closed'].join(' ')
+		const classList = [
+			variant,
+			enterFrom,
+			open ? 'open' : 'closed',
+			'surface',
+		].join(' ')
 		return html`
 			<slot name="open">
 				<button @click=${() => this.openDialog()}>Open Dialog</button>
 			</slot>
 			<dialog
+				part="dialog"
 				class=${classList}
 				@transitionEnd=${(e) => !open && e.target.close()}
 			>
@@ -41,37 +47,29 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--dialog-background-color: themeSurfaceBg;
-			--dialog-color: themeSurfaceColor;
-			--dialog-border: themeSurfaceBorder;
-			--dialog-border-radius: 1rem;
-			--dialog-box-shadow: var(--theme-surface-shadow);
-			--dialog-padding: 1rem;
-			--dialog-height: unset;
-			--dialog-width: unset;
+			--dialogBorderRadius: 1rem;
+			--dialogPadding: 1rem;
+			--dialogHeight: unset;
+			--dialogWidth: unset;
 			display: inline-block;
 		}
-		[name='open'],
-		[name='close'],
+		[name='open'] *,
+		[name='close'] *,
 		[name='open']::slotted(*),
 		[name='close']::slotted(*) {
 			cursor: pointer;
 		}
 		dialog {
-			background-color: var(--dialog-background-color);
-			border: var(--dialog-border);
-			border-radius: var(--dialog-border-radius);
-			box-shadow: var(--dialog-box-shadow);
-			color: var(--dialog-color);
-			height: var(--dialog-height);
-			padding: var(--dialog-padding);
+			border-radius: var(--dialogBorderRadius);
+			height: var(--dialogHeight);
+			padding: var(--dialogPadding);
 			position: fixed;
 			transition: 0.33s;
-			width: var(--dialog-width);
+			width: var(--dialogWidth);
 		}
 		dialog::backdrop {
-			background-color: var(--dialog-backdrop-color, black);
-			opacity: 0.15;
+			background: var(--dialogBackdropBg, black);
+			opacity: 0.25;
 			transition: 0.33s;
 		}
 		dialog.closed::backdrop {
@@ -79,7 +77,7 @@ export default cuick({
 		}
 		dialog.modal {
 			height: min-content;
-			width: var(--dialog-width, min(80ch, 100%));
+			width: var(--dialogWidth, min(80ch, 100%));
 		}
 		dialog.modal.closed {
 			opacity: 0;
@@ -93,7 +91,7 @@ export default cuick({
 			margin: unset;
 			max-height: unset;
 			top: 0;
-			width: var(--dialog-width, 200px);
+			width: var(--dialogWidth, 200px);
 		}
 		dialog.drawer.left {
 			border-bottom-left-radius: 0;
@@ -109,10 +107,10 @@ export default cuick({
 		}
 		dialog.drawer.bottom,
 		dialog.drawer.top {
-			height: var(--dialog-height, max-content);
+			height: var(--dialogHeight, max-content);
 			margin: 0 auto;
 			max-height: unset;
-			width: var(--dialog-width, min(80ch, 100%));
+			width: var(--dialogWidth, min(80ch, 100%));
 		}
 		dialog.drawer.bottom {
 			border-bottom-left-radius: 0;

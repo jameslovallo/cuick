@@ -58,14 +58,18 @@ nav [slot='close'] {
 }
 
 nav > cuick-dialog {
-	--dialog-border-radius: 0;
-	--dialog-padding: 0;
-	--dialog-width: 12rem;
+	--dialogBorderRadius: 0;
+	--dialogPadding: 0;
+	--dialogWidth: 12rem;
 	margin-right: auto;
 }
 
 nav > cuick-dialog:not(:defined) {
 	display: none;
+}
+
+nav > cuick-dialog::part(dialog) {
+	border-width: 0 1px 0 0;
 }
 
 /* sidebar */

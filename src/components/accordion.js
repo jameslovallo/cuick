@@ -16,12 +16,13 @@ export default cuick({
 		} else this.maxHeight = '0'
 	},
 	template({ maxHeight, open, label, content }) {
+		const classList = [
+			'surface',
+			open && maxHeight === '0' ? 'closing' : null,
+		].join(' ')
 		return html`
-			<details
-				open=${open ? '' : null}
-				class=${open && maxHeight === '0' ? 'closing' : null}
-			>
-				<summary @click=${(e) => this.toggleAccordion(e)}>
+			<details open=${open ? '' : null} class=${classList}>
+				<summary part="summary" @click=${(e) => this.toggleAccordion(e)}>
 					<slot name="summary">${label}</slot>
 					<svg viewBox="0 0 24 24">
 						<path
@@ -44,14 +45,6 @@ export default cuick({
 	styles: css`
 		:host {
 			--accordion-padding: 1rem;
-			--accordion-border: themeSurfaceBorder;
-			--accordion-box-shadow: themeSurfaceShadow;
-			--accordion-content-background-color: themeSurfaceBg;
-			--accordion-content-color: themeSurfaceColor;
-			--accordion-summary-background-color: themeSurfaceBg;
-			--accordion-summary-color: themeSurfaceColor;
-			box-shadow: var(--accordion-box-shadow);
-			border: var(--accordion-border);
 			display: block;
 		}
 		:host(:not(:last-of-type)) {
@@ -62,9 +55,7 @@ export default cuick({
 		}
 		summary {
 			align-items: center;
-			background-color: var(--accordion-summary-background-color);
 			box-sizing: border-box;
-			color: var(--accordion-summary-color);
 			cursor: pointer;
 			display: flex;
 			justify-content: space-between;
@@ -90,8 +81,6 @@ export default cuick({
 			transform: scale(1.5) rotate(180deg);
 		}
 		[part='content'] {
-			background-color: var(--accordion-content-background-color);
-			color: var(--accordion-content-color);
 			max-height: 0;
 			overflow: hidden;
 			transition: ease-out max-height 0.33s;
