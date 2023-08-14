@@ -142,6 +142,13 @@ code {
 a {
 	color: inherit;
 	text-decoration-color: dodgerblue;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+}
+
+a:hover {
+	text-decoration-thickness: 2px;
+	text-underline-offset: 1px;
 }
 
 ul {
@@ -202,8 +209,6 @@ a.logo:hover {
 .angled:hover {
 	color: inherit;
 	text-decoration-color: #e8423d;
-	text-decoration-thickness: 2px;
-	text-underline-offset: 1px;
 }
 
 .angled + .angled {

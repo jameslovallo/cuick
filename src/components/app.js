@@ -15,7 +15,6 @@ export default cuick({
 				if (status === 200 && !html.startsWith('<!DOCTYPE html>')) {
 					this.innerHTML = html
 					this.handleScripts()
-					this.handleLinks(this)
 					this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
 				} else {
 					this.innerHTML = `
@@ -24,6 +23,7 @@ export default cuick({
 					<a href="/">Go Home</a>
 				`
 				}
+				this.handleLinks(this)
 			} catch (error) {
 				console.error(error)
 			}
