@@ -7,10 +7,10 @@ export default cuick({
 	async fetch(page) {
 		try {
 			const response = await fetch(this.pageRoot + page + '/index.html')
-			const { status } = await response
+			const { status, url } = await response
 			const html = await response.text()
 			history.pushState({ html }, '', page)
-			if (status === 200) {
+			if (status === 200 && url.includes(page)) {
 				this.innerHTML = html
 				this.handleScripts()
 				this.handleLinks(this)
