@@ -43,7 +43,7 @@ export default cuick({
 		:host {
 			--dialog-background-color: themeSurfaceBg;
 			--dialog-color: themeSurfaceColor;
-			--dialog-border: none;
+			--dialog-border: themeSurfaceBorder;
 			--dialog-border-radius: 1rem;
 			--dialog-box-shadow: var(--theme-surface-shadow);
 			--dialog-padding: 1rem;
