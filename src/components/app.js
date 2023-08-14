@@ -3,26 +3,31 @@ import cuick from '../cuick.js'
 export default cuick({
 	tag: 'app',
 	shadow: false,
-	pageRoot: '/pages',
+	loaded: false,
+	props: { pageRoot: '/pages' },
 	async fetch(page) {
-		try {
-			const response = await fetch(this.pageRoot + page + '/index.html')
-			console.log(response)
-			const { status, redirected } = await response
-			const html = await response.text()
-			history.pushState({ html }, '', page)
-			if (status === 200 && !html.startsWith('<!DOCTYPE html>')) {
-				this.innerHTML = html
-				this.handleScripts()
-				this.handleLinks(this)
-				this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
-			} else {
-				this.innerHTML = `
-					<h1>Error ${status}</h1>
+		if (!this.loaded || page !== location.pathname) {
+			try {
+				const response = await fetch(this.pageRoot + page + '/index.html')
+				console.log(response)
+				const { status } = await response
+				const html = await response.text()
+				history.pushState({ html }, '', page)
+				if (status === 200 && !html.startsWith('<!DOCTYPE html>')) {
+					this.innerHTML = html
+					this.handleScripts()
+					this.handleLinks(this)
+					this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
+				} else {
+					this.innerHTML = `
+					<h1>Error 404</h1>
+					<p>We couldn't find that page, please try again.</p>
+					<a href="/">Go Home</a>
 				`
+				}
+			} catch (error) {
+				console.error(error)
 			}
-		} catch (error) {
-			console.error(error)
 		}
 	},
 	handleLinks(target) {
@@ -51,6 +56,7 @@ export default cuick({
 	setup() {
 		const { pathname } = location
 		this.fetch(pathname)
+		this.loaded = true
 		this.handleLinks(document)
 		addEventListener('popstate', (e) => {
 			this.innerHTML = e.state.html
