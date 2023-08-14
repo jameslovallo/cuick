@@ -37,6 +37,7 @@ cuick({
 	styles: css`
 		:host {
 			background: themeSurfaceBg;
+			color: themeSurfaceColor;
 		}
 		p {
 			font-weight: bold;

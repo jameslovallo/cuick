@@ -134,19 +134,16 @@ cuick({
 		:host {
 			--story-color: themeSurfaceColor;
 			--story-background-color: themeSurfaceBg;
+			--story-border: themeSurfaceBorder;
+			--story-box-shadow: themeSurfaceShadow;
+			--story-divider-color: themeDivider;
 			--story-canvas-height: unset;
-			border: 1px solid var(--story-border-color);
+			border: var(--story-border);
 			color: var(--story-color);
 			border-radius: 0.25rem;
-			box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
-				rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+			box-shadow: var(--story-box-shadow);
 			display: block;
 			overflow: hidden;
-		}
-		@media (prefers-color-scheme: dark) {
-			:host {
-				--story-border-color: themeBorder;
-			}
 		}
 		slot {
 			display: block;
@@ -159,7 +156,7 @@ cuick({
 		}
 		label {
 			align-items: center;
-			border-top: 1px solid var(--story-border-color);
+			border-top: 1px solid var(--story-divider-color);
 			display: flex;
 			justify-content: space-between;
 			padding: 0.75rem;

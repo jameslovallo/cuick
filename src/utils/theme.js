@@ -1,26 +1,31 @@
 import { transform } from '//cdn.skypack.dev/nested-css-to-flat'
 
-const reset = `* { box-sizing: border-box }`
-
 const light = {
-	themeBorder: '#eee',
+	themeDivider: '#eee',
 	themePrimaryBg: 'dodgerblue',
 	themePrimaryColor: 'white',
 	themeSurfaceBg: '#fafafa',
-	themeSurfaceColor: 'unset',
+	themeSurfaceBorder: 'none',
+	themeSurfaceColor: 'black',
 	themeSurfaceShadow:
 		'rgba(0, 0, 0, 0.1) 0px 1px 3px 1px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px',
 }
 
 const dark = {
-	themeBorder: '#282c34',
+	themeDivider: '#282c34',
+	themePrimaryBg: 'dodgerblue',
+	themePrimaryColor: 'white',
 	themeSurfaceBg: '#171a1f',
-	themeSurfaceColor: 'unset',
+	themeSurfaceBorder: '1px solid #282c34',
+	themeSurfaceColor: 'white',
+	themeSurfaceShadow: 'none',
 }
 
 const isDark = matchMedia('(prefers-color-scheme: dark)').matches
 
-const theme = isDark ? { ...light, ...dark } : light
+const theme = isDark ? dark : light
+
+const reset = `* { box-sizing: border-box }`
 
 export default ([v]) => {
 	v = reset + v
