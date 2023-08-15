@@ -44,7 +44,10 @@ export default cuick({
 										}}
 								  />`
 								: html`
-										<select @input=${(e) => (this.el[prop] = e.target.value)}>
+										<select
+											value=${this.el[prop]}
+											@input=${(e) => (this.el[prop] = e.target.value)}
+										>
 											${options.map((opt) => html`<option>${opt}</option>`)}
 										</select>
 								  `}
