@@ -17,21 +17,23 @@ cuick({
 		return html`<slot></slot>
 			<p>Components</p>
 			<ul>
-				${componentNames.map((name) => {
-					const href = `/stories/${name}`
-					return html`<li>
-						<a
-							class=${currentPath === href ? 'active' : null}
-							href=${href}
-							@click=${(e) => {
-								e.preventDefault()
-								app.fetch(href)
-							}}
-						>
-							${name}
-						</a>
-					</li>`
-				})}
+				${componentNames
+					.filter((name) => name !== 'story')
+					.map((name) => {
+						const href = `/stories/${name}`
+						return html`<li>
+							<a
+								class=${currentPath === href ? 'active' : null}
+								href=${href}
+								@click=${(e) => {
+									e.preventDefault()
+									app.fetch(href)
+								}}
+							>
+								${name}
+							</a>
+						</li>`
+					})}
 			</ul>`
 	},
 	styles: css`

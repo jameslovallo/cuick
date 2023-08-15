@@ -20,8 +20,8 @@ export default cuick({
 			<style>
 				code[class*='language-'],
 				pre[class*='language-'] {
-					font-size: 0.75rem;
-					line-height: 2;
+					font-size: 0.9rem;
+					line-height: 1.5;
 					margin: 0;
 					tab-size: 2;
 				}

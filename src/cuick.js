@@ -20,6 +20,7 @@ export default function cuick(options) {
 		'handlebars',
 		'styles',
 		'render',
+		'onRender',
 		'onIntersect',
 		'onResize',
 	]
@@ -57,6 +58,7 @@ export default function cuick(options) {
 		}
 
 		defineProps() {
+			this.propConfigs = {}
 			propNames.forEach((prop) => {
 				const kebab = toKebab(prop)
 				const config = props[prop]
@@ -78,10 +80,13 @@ export default function cuick(options) {
 				switch (typeof defaultValue) {
 					case 'string':
 						controlType = 'text'
+						break
 					case 'number':
 						controlType = 'number'
+						break
 					case 'boolean':
 						controlType = 'checkbox'
+						break
 				}
 				if (prop.toLowerCase().endsWith('color')) controlType = 'color'
 				if (options) controlType = 'select'
@@ -94,11 +99,19 @@ export default function cuick(options) {
 					},
 					set: (v) => {
 						const isBool = configType === 'boolean'
-						v
-							? this.setAttribute(kebab, isBool ? '' : v || defaultValue)
-							: this.removeAttribute(v)
+						if (isBool) {
+							v
+								? this.setAttribute(kebab, isBool ? '' : v || defaultValue)
+								: this.removeAttribute(v)
+						} else this.setAttribute(kebab, v)
 					},
 				})
+				this.propConfigs[prop] = {
+					name: prop,
+					defaultValue,
+					controlType,
+					options,
+				}
 			})
 		}
 
@@ -185,6 +198,7 @@ export default function cuick(options) {
 		render() {
 			if (this.template && typeof this.template === 'function') this.uhtml()
 			if (this.hbs && typeof this.hbs === 'function') this.handlebars()
+			if (this.onRender && typeof this.onRender === 'function') this.onRender()
 		}
 
 		handleIntersect() {

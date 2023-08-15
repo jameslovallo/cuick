@@ -7,7 +7,7 @@ import compare from './compare.js'
 import dialog from './dialog.js'
 import i18n from './i18n.js'
 import icon from './icon.js'
-import './story.js'
+import story from './story.js'
 import video from './video.js'
 import youtube from './youtube.js'
 
@@ -21,6 +21,7 @@ const components = {
 	dialog,
 	icon,
 	i18n,
+	story,
 	video,
 	youtube,
 }

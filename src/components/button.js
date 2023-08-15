@@ -13,15 +13,15 @@ export default cuick({
 	},
 	template({ label, href, target, size, shape, variant, icon }) {
 		const classList = [size, shape, variant, icon ? 'icon' : ''].join(' ')
-		return html`
-			${href
-				? html`<a class=${classList} href=${href} target=${target}>
-						<slot>${label}</slot>
-				  </a>`
-				: html`<button class=${classList}>
-						<slot>${label}</slot>
-				  </button>`}
-		`
+		if (href) {
+			return html`<a class=${classList} href=${href} target=${target}>
+				<slot>${label}</slot>
+			</a>`
+		} else {
+			return html`<button class=${classList}>
+				<slot>${label}</slot>
+			</button>`
+		}
 	},
 	styles: css`
 		:host {

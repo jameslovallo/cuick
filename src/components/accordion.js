@@ -23,25 +23,23 @@ export default cuick({
 		}
 	},
 	template({ maxHeight, open, label, content }) {
-		return html`
-			<details class="surface">
-				<summary part="summary" @click=${(e) => this.toggleAccordion(e)}>
-					<slot name="summary">${label}</slot>
-					<svg
-						part="indicator"
-						class=${open ? 'open' : 'closed'}
-						viewBox="0 0 24 24"
-					>
-						<path
-							d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-						/>
-					</svg>
-				</summary>
-				<div part="content" style=${`max-height: ${maxHeight}px`}>
-					<slot>${content}</slot>
-				</div>
-			</details>
-		`
+		return html`<details class="surface">
+			<summary part="summary" @click=${(e) => this.toggleAccordion(e)}>
+				<slot name="summary">${label}</slot>
+				<svg
+					part="indicator"
+					class=${open ? 'open' : 'closed'}
+					viewBox="0 0 24 24"
+				>
+					<path
+						d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+					/>
+				</svg>
+			</summary>
+			<div part="content" style=${`max-height: ${maxHeight}px`}>
+				<slot>${content}</slot>
+			</div>
+		</details>`
 	},
 	styles: css`
 		:host {

@@ -51,7 +51,7 @@ export default cuick({
 						cx="21"
 						cy="21"
 						r="15.91549430918954"
-						stroke="var(--video-button-color)"
+						stroke="var(--videoButtonColor)"
 						stroke-dashoffset="25"
 						stroke-dasharray=${`${progress} ${100 - progress}`}
 						stroke-width="2px"
@@ -62,15 +62,15 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--video-aspect-ratio: 16/9;
-			--video-button-background-color: themePrimaryBg;
-			--video-button-color: themePrimaryColor;
-			aspect-ratio: var(--video-aspect-ratio);
+			--videoAspectRatio: 16/9;
+			--videoButtonBg: var(--themePrimaryBg, var(--defaultPrimaryBg));
+			--videoButtonColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
+			aspect-ratio: var(--videoAspectRatio);
 			display: block;
 			position: relative;
 		}
 		video {
-			aspect-ratio: var(--video-aspect-ratio);
+			aspect-ratio: var(--videoAspectRatio);
 			display: block;
 			height: auto;
 			object-fit: cover;
@@ -78,7 +78,7 @@ export default cuick({
 		}
 		[part='button'] {
 			align-items: center;
-			background: var(--video-button-background-color);
+			background: var(--videoButtonBg);
 			border: none;
 			border-radius: 50%;
 			bottom: 1rem;
@@ -94,7 +94,7 @@ export default cuick({
 		}
 		[part='icon'] {
 			display: block;
-			fill: var(--video-button-color);
+			fill: var(--videoButtonColor);
 			height: 1.5rem;
 			width: 1.5rem;
 		}
