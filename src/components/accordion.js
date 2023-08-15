@@ -43,7 +43,7 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--accordion-padding: 1rem;
+			--accordionPadding: 1rem;
 			display: block;
 		}
 		:host(:not(:last-of-type)) {
@@ -60,7 +60,7 @@ export default cuick({
 			justify-content: space-between;
 			list-style-type: none;
 			overflow: hidden;
-			padding: var(--accordion-padding);
+			padding: var(--accordionPadding);
 			text-overflow: ellipsis;
 			user-select: none;
 			white-space: nowrap;
@@ -86,7 +86,10 @@ export default cuick({
 		}
 		[part='content'] slot {
 			display: block;
-			padding: var(--accordion-padding);
+			padding: var(--accordionPadding);
+		}
+		[part='content'] slot::slotted(*:first-child) {
+			margin-top: 0;
 		}
 	`,
 })

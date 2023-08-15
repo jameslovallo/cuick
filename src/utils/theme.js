@@ -18,7 +18,7 @@ const defaultTheme = `
 		:host {
 			--defaultPrimaryBg: dodgerblue;
 			--defaultPrimaryColor: white;
-			--defaultSurfaceBg: #171a1f;
+			--defaultSurfaceBg: #16181d;
 			--defaultSurfaceBorder: 1px solid #282c34;
 			--defaultSurfaceColor: white;
 			--defaultSurfaceShadow: none;
@@ -34,6 +34,7 @@ const defaultTheme = `
 			box-shadow: none;
 		}
 	}
+	/* End of default theme */
 `
 
 export default ([v]) => {

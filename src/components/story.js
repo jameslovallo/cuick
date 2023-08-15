@@ -5,21 +5,30 @@ export default cuick({
 	tag: 'story',
 	setup() {
 		this.el = this.firstElementChild
-		this.el.addEventListener('update', () => {
-			const code = this.root.querySelector('code')
-			if (code) {
-				code.textContent = this.el.outerHTML.replaceAll('\n\t', '\n')
-				highlightAllUnder(this.root)
-			}
-		})
+	},
+	updateCode() {
+		this.code.textContent = this.el.outerHTML.replaceAll('\n\t', '\n')
+		highlightAllUnder(this.root)
 	},
 	onRender() {
-		this.el.dispatchEvent(new Event('update'))
+		this.code = this.root.querySelector('code')
+		this.code && this.updateCode()
+	},
+	getStyles(styles) {
+		if (styles) {
+			styles = styles.split('/* End of default theme */')[1]
+			const host = styles.match(/:host {[\s\S]*?}/gm)[0]
+			if (host) {
+				const rules = host.match(/--.+?:.+?;/gm)
+				return rules.map((rule) => rule.replace(';', '').split(': '))
+			} else return []
+		} else return []
 	},
 	copyCode() {
 		navigator.clipboard.writeText(this.el.outerHTML)
 	},
-	template({ el: { propConfigs } }) {
+	template({ el: { propConfigs, styles } }) {
+		styles = this.getStyles(styles)
 		return html`
 			<link
 				rel="stylesheet"
@@ -33,33 +42,69 @@ export default cuick({
 						<label>
 							${name}
 							${controlType !== 'select'
-								? html`<input
-										type=${controlType}
-										value=${this.el[prop]}
-										@input=${(e) => {
-											if (controlType === 'checkbox') {
-												e.target.checked
-													? this.el.setAttribute(prop, '')
-													: this.el.removeAttribute(prop)
-											} else {
-												this.el[prop] = e.target.value
-											}
-										}}
-								  />`
+								? html`
+										<input
+											type=${controlType}
+											value=${this.el[prop]}
+											@input=${(e) => {
+												if (controlType === 'checkbox') {
+													e.target.checked
+														? this.el.setAttribute(prop, '')
+														: this.el.removeAttribute(prop)
+												} else {
+													this.el[prop] = e.target.value
+												}
+												this.updateCode()
+											}}
+										/>
+								  `
 								: html`
 										<select
-											value=${this.el[prop]}
-											@input=${(e) => (this.el[prop] = e.target.value)}
+											@input=${(e) => {
+												this.el[prop] = e.target.value
+												this.updateCode()
+											}}
 										>
-											${options.map((opt) => html`<option>${opt}</option>`)}
+											${options.map(
+												(opt) =>
+													html`
+														<option
+															selected=${this.el[prop] === opt ? '' : null}
+														>
+															${opt}
+														</option>
+													`
+											)}
 										</select>
 								  `}
 						</label>
 					`
 				})}
+				${styles.map((style) => {
+					const [prop, value] = style
+					const isColor =
+						prop.toLowerCase().endsWith('color') ||
+						prop.toLowerCase().endsWith('bg')
+					return html`
+						<label>
+							<span>${prop}</span>
+							<input
+								type=${isColor ? 'color' : 'text'}
+								value=${value}
+								style=${`background: ${value}`}
+								@input=${(e) => {
+									console.log('input')
+									this.el.style.setProperty(prop, e.target.value)
+									e.target.style.background = e.target.value
+									this.updateCode()
+								}}
+							/>
+						</label>
+					`
+				})}
 			</form>
 			<div part="code">
-				HTML
+				<span>HTML</span>
 				<button @click=${() => this.copyCode()}>
 					<svg viewBox="0 0 24 24">
 						<path
@@ -99,21 +144,58 @@ export default cuick({
 			align-items: center;
 			border-top: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			display: flex;
+			font-size: 14px;
+			gap: 1rem;
 			justify-content: space-between;
 			padding: 0.5rem 1rem;
 		}
+		label span {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
 		input,
 		select {
+			-moz-appearance: none;
+			-webkit-appearance: none;
 			appearance: none;
 			background: transparent;
-			border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			border-radius: 1rem;
+			border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			font: inherit;
 			height: 2rem;
-			padding: 0 1rem;
+			margin: 0;
+			max-width: 50%;
+			padding: 0 0.75rem;
 		}
 		select {
 			min-width: 100px;
+		}
+		input[type='checkbox'] {
+			padding: 2px;
+			width: 100px;
+		}
+		input[type='checkbox']:before {
+			align-items: center;
+			border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
+			border-radius: 1rem;
+			box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
+			content: 'false';
+			display: flex;
+			height: calc(100% - 2px);
+			justify-content: center;
+			transition: 0.33s;
+			width: 60px;
+		}
+		input[type='checkbox']:checked:before {
+			content: 'true';
+			margin-left: 32px;
+		}
+		input[type='color']::-webkit-color-swatch {
+			display: none;
+		}
+		input[type='color']::-moz-color-swatch {
+			display: none;
 		}
 		[part='code'] {
 			align-content: center;
@@ -124,6 +206,9 @@ export default cuick({
 			margin-bottom: -3rem;
 			padding: 1rem;
 		}
+		[part='code'] > * {
+			opacity: 0.75;
+		}
 		[part='code'] button {
 			align-items: center;
 			background: transparent;
@@ -133,6 +218,9 @@ export default cuick({
 			display: flex;
 			gap: 0.5rem;
 			padding: 0;
+		}
+		[part='code'] button:hover {
+			opacity: 1;
 		}
 		[part='code'] button svg {
 			display: block;
