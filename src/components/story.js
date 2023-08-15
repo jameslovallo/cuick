@@ -16,6 +16,9 @@ export default cuick({
 	onRender() {
 		this.el.dispatchEvent(new Event('update'))
 	},
+	copyCode() {
+		navigator.clipboard.writeText(this.el.outerHTML)
+	},
 	template({ el: { propConfigs } }) {
 		return html`
 			<link
@@ -25,7 +28,7 @@ export default cuick({
 			<slot></slot>
 			<form part="controls">
 				${Object.keys(propConfigs).map((prop) => {
-					const { name, defaultValue, controlType, options } = propConfigs[prop]
+					const { name, controlType, options } = propConfigs[prop]
 					return html`
 						<label>
 							${name}
@@ -55,15 +58,32 @@ export default cuick({
 					`
 				})}
 			</form>
+			<div part="code">
+				HTML
+				<button @click=${() => this.copyCode()}>
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+						/>
+					</svg>
+					Copy
+				</button>
+			</div>
 			<pre class="language-html"><code></code></pre>
 		`
 	},
 	styles: css`
 		:host {
 			display: block;
-			border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			border-radius: 0.5rem;
+			box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
 			overflow: hidden;
+		}
+		@media (prefers-color-scheme: dark) {
+			:host {
+				border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
+				box-shadow: none;
+			}
 		}
 		slot {
 			display: block;
@@ -77,12 +97,10 @@ export default cuick({
 		}
 		label {
 			align-items: center;
+			border-top: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			display: flex;
 			justify-content: space-between;
 			padding: 0.5rem 1rem;
-		}
-		label:not(:last-of-type) {
-			border-bottom: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 		}
 		input,
 		select {
@@ -97,6 +115,30 @@ export default cuick({
 		select {
 			min-width: 100px;
 		}
+		[part='code'] {
+			align-content: center;
+			color: white;
+			display: flex;
+			font-size: 0.9rem;
+			justify-content: space-between;
+			margin-bottom: -3rem;
+			padding: 1rem;
+		}
+		[part='code'] button {
+			align-items: center;
+			background: transparent;
+			border: none;
+			color: inherit;
+			cursor: pointer;
+			display: flex;
+			gap: 0.5rem;
+			padding: 0;
+		}
+		[part='code'] button svg {
+			display: block;
+			fill: currentColor;
+			width: 0.75rem;
+		}
 		code[class*='language-'],
 		pre[class*='language-'] {
 			border-radius: 0;
@@ -104,6 +146,9 @@ export default cuick({
 			line-height: 1.5;
 			margin: 0;
 			tab-size: 2;
+		}
+		pre[class*='language-'] {
+			padding-top: 3rem;
 		}
 	`,
 })
