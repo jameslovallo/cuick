@@ -24,6 +24,7 @@ export default cuick({
 	loaded: false,
 	async fetch(page) {
 		try {
+			if (page === '/') page = ''
 			const response = await fetch(this.pageRoot + page + '/index.html')
 			const { status } = await response
 			const html = await response.text()
