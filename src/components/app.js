@@ -27,7 +27,7 @@ export default cuick({
 			if (page === '/') page = ''
 			const response = await fetch(this.pageRoot + page + '/index.html')
 			const { status } = await response
-			const html = await response.text()
+			let html = await response.text()
 			history.pushState({ html }, '', page)
 			if (status === 200) {
 				if (html.includes('</cuick-app>')) {
