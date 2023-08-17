@@ -17,7 +17,9 @@ const getFiles = (dir, files = []) => {
 		const name = `${dir}/${file}`
 		if (fs.statSync(name).isDirectory()) {
 			getFiles(name, files)
-		} else files.push(name)
+		} else if (name.endsWith('.html')) {
+			files.push(name)
+		}
 	}
 	return files
 }
