@@ -17,9 +17,9 @@ export default cuick({
 	getStyles(styles) {
 		if (styles) {
 			styles = styles.split('/* End of default theme */')[1]
-			const host = styles.match(/:host {[\s\S]*?}/gm)[0]
-			if (host) {
-				const rules = host.match(/--.+?:.+?;/gm)
+			const host = styles.match(/:host {[\s\S]*?}/gm)
+			if (host && host[0]) {
+				const rules = host[0].match(/--.+?:.+?;/gm)
 				return rules.map((rule) => rule.replace(';', '').split(': '))
 			} else return []
 		} else return []

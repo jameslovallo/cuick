@@ -1,3 +1,4 @@
 .vscode
 .netlify
 .DS_Store
+dist
