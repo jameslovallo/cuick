@@ -22,7 +22,6 @@ export default cuick({
 	tag: 'app',
 	shadow: false,
 	loaded: false,
-	props: { pageRoot: '/pages' },
 	async fetch(page) {
 		try {
 			const response = await fetch(this.pageRoot + page + '/index.html')
@@ -65,8 +64,10 @@ export default cuick({
 	setup() {
 		const { pathname } = location
 		const dev = this.children.length === 0
+		console.log(dev)
 		dev && this.fetch(pathname)
-		if (!dev) this.pageRoot = ''
+		this.pageRoot = dev ? '/pages' : ''
+		console.log(this.pageRoot)
 		this.handleLinks(document)
 		addEventListener('popstate', (e) => {
 			const {
