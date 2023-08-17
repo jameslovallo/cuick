@@ -6,7 +6,7 @@
 	"main": "src/cuick.js",
 	"module": "src/cuick.js",
 	"scripts": {
-		"serve dev": "npx vite",
+		"serve dev": "npx vite --open",
 		"serve prod": "npx browser-sync start -s --cwd=\"/dist\"",
 		"build": "node src/build.js"
 	},
