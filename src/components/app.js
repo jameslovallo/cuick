@@ -28,7 +28,7 @@ export default cuick({
 			const { status } = await response
 			const html = await response.text()
 			history.pushState({ html }, '', page)
-			if (status === 200 && !html.startsWith('<!DOCTYPE html>')) {
+			if (status === 200) {
 				this.innerHTML = html
 				this.handleScripts()
 				this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
@@ -64,10 +64,8 @@ export default cuick({
 	setup() {
 		const { pathname } = location
 		const dev = this.children.length === 0
-		console.log(dev)
 		dev && this.fetch(pathname)
 		this.pageRoot = dev ? '/pages' : ''
-		console.log(this.pageRoot)
 		this.handleLinks(document)
 		addEventListener('popstate', (e) => {
 			const {
