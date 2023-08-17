@@ -7,7 +7,8 @@
 	"module": "src/cuick.js",
 	"scripts": {
 		"serve dev": "npx vite",
-		"serve prod": "npx browser-sync start -s --cwd=\"/dist\""
+		"serve prod": "npx browser-sync start -s --cwd=\"/dist\"",
+		"build": "node src/build.js"
 	},
 	"author": "James Lovallo",
 	"license": "ISC"
