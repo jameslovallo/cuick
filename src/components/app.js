@@ -30,6 +30,9 @@ export default cuick({
 			const html = await response.text()
 			history.pushState({ html }, '', page)
 			if (status === 200) {
+				if (html.includes('</cuick-app>')) {
+					html = html.split(/<cuick-app.+?>/g)[1].split('</cuick-app>')[0]
+				}
 				this.innerHTML = html
 				this.handleScripts()
 				this.dispatchEvent(new CustomEvent('fetch', { detail: page }))
