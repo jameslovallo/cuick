@@ -66,6 +66,7 @@ export default cuick({
 		const { pathname } = location
 		const dev = this.children.length === 0
 		dev && this.fetch(pathname)
+		if (!dev) this.pageRoot = ''
 		this.handleLinks(document)
 		addEventListener('popstate', (e) => {
 			const {
