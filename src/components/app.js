@@ -24,7 +24,6 @@ export default cuick({
 	loaded: false,
 	async fetch(page) {
 		try {
-			console.log(this.pageRoot + (page === '/' ? '' : page) + '/index.html')
 			const response = await fetch(
 				this.pageRoot + (page === '/' ? '' : page) + '/index.html'
 			)
