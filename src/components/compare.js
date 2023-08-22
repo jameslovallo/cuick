@@ -29,18 +29,16 @@ export default cuick({
 
 	styles: css`
 		:host {
-			--compare-border-radius: 0.5rem;
-			--compare-divider-color: white;
+			--compareBorderRadius: 0.5rem;
+			--compareDividerColor: white;
 			--compareButtonBg: var(--themePrimaryBg, var(--defaultPrimaryBg));
-			--compareButtonColor: var(
-				--themePrimaryColor,
-				var(--defaultPrimaryColor)
-			);
+			/* prettier-ignore */
+			--compareButtonColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
 			display: block;
 			position: relative;
 		}
 		::slotted(*) {
-			border-radius: var(--compare-border-radius);
+			border-radius: var(--compareBorderRadius);
 			display: block;
 			width: 100%;
 		}
@@ -61,7 +59,7 @@ export default cuick({
 			-webkit-appearance: none;
 			appearance: none;
 			background: transparent;
-			border-radius: var(--compare-border-radius);
+			border-radius: var(--compareBorderRadius);
 			cursor: pointer;
 			height: 100%;
 			left: 0;
@@ -81,7 +79,7 @@ export default cuick({
 		input[type='range']::-webkit-slider-thumb {
 			-webkit-appearance: none;
 			appearance: none;
-			background-color: var(--compare-divider-color);
+			background-color: var(--compareDividerColor);
 			cursor: ew-resize;
 			height: 100%;
 			width: 0.5rem;
@@ -91,7 +89,7 @@ export default cuick({
 			height: 100%;
 		}
 		input[type='range']::-moz-range-thumb {
-			background-color: var(--compare-divider-color);
+			background-color: var(--compareDividerColor);
 			border: none;
 			border-radius: 0;
 			cursor: ew-resize;
