@@ -2,6 +2,7 @@ import accordion from './accordion.js'
 import avatar from './avatar.js'
 import badge from './badge.js'
 import button from './button.js'
+import card from './card.js'
 import code from './code.js'
 import compare from './compare.js'
 import dialog from './dialog.js'
@@ -16,6 +17,7 @@ const components = {
 	avatar,
 	badge,
 	button,
+	card,
 	code,
 	compare,
 	dialog,

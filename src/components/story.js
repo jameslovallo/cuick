@@ -142,7 +142,7 @@ export default cuick({
 		}
 		label {
 			align-items: center;
-			border-top: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
+			border-top: var(--themeSurfaceDivider, var(--defaultSurfaceDivider));
 			display: flex;
 			font-size: 14px;
 			gap: 1rem;
@@ -159,9 +159,8 @@ export default cuick({
 			-moz-appearance: none;
 			-webkit-appearance: none;
 			appearance: none;
-			background: transparent;
 			border-radius: 1rem;
-			border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
+			border: var(--themeSurfaceDivider, var(--defaultSurfaceDivider));
 			font: inherit;
 			height: 2rem;
 			margin: 0;
@@ -180,16 +179,17 @@ export default cuick({
 			border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			border-radius: 1rem;
 			box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
+			box-sizing: border-box;
 			content: 'false';
 			display: flex;
-			height: calc(100% - 2px);
+			height: 100%;
 			justify-content: center;
 			transition: 0.33s;
 			width: 60px;
 		}
 		input[type='checkbox']:checked:before {
 			content: 'true';
-			margin-left: 32px;
+			margin-left: 34px;
 		}
 		input[type='color']::-webkit-color-swatch {
 			display: none;

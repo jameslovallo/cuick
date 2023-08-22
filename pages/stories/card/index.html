@@ -1,0 +1,50 @@
+<h1>Card</h1>
+
+<cuick-story>
+	<cuick-card>
+		<h3>Card Title</h3>
+		<p>Card Content</p>
+	</cuick-card>
+</cuick-story>
+
+<h2>Media Card</h2>
+<cuick-card>
+	<img src="//picsum.photos/seed/30/800/400/" slot="media" />
+	<h3>Card Title</h3>
+	<p>Card Subtitle</p>
+</cuick-card>
+
+<h2>Action Card</h2>
+<cuick-card>
+	<h3>Card Title</h3>
+	<p>Card Subtitle</p>
+	<cuick-button slot="actions" variant="text"></cuick-button>
+	<cuick-button slot="actions" variant="text"></cuick-button>
+	<cuick-button slot="actions" variant="text" style="margin-left: auto">
+		<cuick-icon icon="check"></cuick-icon>
+		Click Me
+	</cuick-button>
+</cuick-card>
+
+<h2>Horizontal Card</h2>
+<cuick-card horizontal>
+	<cuick-avatar
+		src="https://picsum.photos/id/64/128/128"
+		shape="circle"
+		slot="media"
+	></cuick-avatar>
+	<h3>Card Title</h3>
+	<p>Card Subtitle</p>
+	<cuick-button slot="actions" variant="text" icon style="margin-left: auto">
+		<cuick-icon icon="phone"></cuick-icon>
+	</cuick-button>
+	<cuick-button slot="actions" variant="text" icon style="margin-left: auto">
+		<cuick-icon icon="email"></cuick-icon>
+	</cuick-button>
+</cuick-card>
+
+<style>
+	cuick-card {
+		max-width: 400px;
+	}
+</style>
