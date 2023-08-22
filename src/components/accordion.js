@@ -23,7 +23,7 @@ export default cuick({
 		}
 	},
 	template({ maxHeight, open, label, content }) {
-		return html`<details class="surface">
+		return html`<details>
 			<summary part="summary" @click=${(e) => this.toggleAccordion(e)}>
 				<slot name="summary">${label}</slot>
 				<svg
@@ -43,7 +43,19 @@ export default cuick({
 	},
 	styles: css`
 		:host {
+			--accordionBg: var(--themeSurfaceBg, var(--defaultSurfaceBg));
+			--accordionColor: var(--themeSurfaceColor, var(--defaultSurfaceColor));
+			--accordionConentBg: inherit;
+			--accordionConentColor: currentColor;
+			--accordionBorder: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
+			--accordionBorderRadius: 0;
 			--accordionPadding: 1rem;
+			--accordionShadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
+			background: var(--accordionBg);
+			border: var(--accordionBorder);
+			border-radius: var(--accordionBorderRadius);
+			box-shadow: var(--accordionShadow);
+			color: var(--accordionColor);
 			display: block;
 		}
 		:host(:not(:last-of-type)) {
@@ -80,6 +92,8 @@ export default cuick({
 			transform: scale(1.5) rotate(180deg);
 		}
 		[part='content'] {
+			background: var(--accordionConentBg);
+			color: var(--accordionConentColor);
 			max-height: 0;
 			overflow: hidden;
 			transition: ease-out max-height 0.33s;

@@ -17,7 +17,7 @@ export default cuick({
 			--cardBg: var(--themeSurfaceBg, var(--defaultSurfaceBg));
 			--cardColor: var(--themeSurfaceColor, var(--defaultSurfaceColor));
 			--cardBorder: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
-			--cardBorderRadius: 1rem;
+			--cardBorderRadius: 0;
 			--cardPadding: 1rem;
 			--cardShadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
 			background: var(--cardBg);
