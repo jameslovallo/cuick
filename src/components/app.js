@@ -24,7 +24,10 @@ export default cuick({
 	loaded: false,
 	async fetch(page) {
 		try {
-			const response = await fetch(this.pageRoot + (page === '/' ? '' : page) + '/index.html')
+			console.log(this.pageRoot + (page === '/' ? '' : page) + '/index.html')
+			const response = await fetch(
+				this.pageRoot + (page === '/' ? '' : page) + '/index.html'
+			)
 			const { status } = await response
 			let html = await response.text()
 			history.pushState({ html }, '', page)
@@ -67,8 +70,8 @@ export default cuick({
 	setup() {
 		const { pathname } = location
 		const dev = this.children.length === 0
-		dev && this.fetch(pathname)
 		this.pageRoot = dev ? '/pages' : ''
+		dev && this.fetch(pathname)
 		this.handleLinks(document)
 		addEventListener('popstate', (e) => {
 			const {
