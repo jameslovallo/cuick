@@ -45,7 +45,7 @@ export default cuick({
 		:host {
 			--accordionBg: var(--themeSurfaceBg, var(--defaultSurfaceBg));
 			--accordionColor: var(--themeSurfaceColor, var(--defaultSurfaceColor));
-			--accordionConentBg: inherit;
+			--accordionContentBg: inherit;
 			--accordionConentColor: currentColor;
 			--accordionBorder: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			--accordionBorderRadius: 0;
@@ -92,7 +92,7 @@ export default cuick({
 			transform: scale(1.5) rotate(180deg);
 		}
 		[part='content'] {
-			background: var(--accordionConentBg);
+			background: var(--accordionContentBg);
 			color: var(--accordionConentColor);
 			max-height: 0;
 			overflow: hidden;
