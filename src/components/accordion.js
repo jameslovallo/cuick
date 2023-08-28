@@ -17,9 +17,7 @@ export default cuick({
 		} else {
 			this.maxHeight = 0
 			this.open = false
-			setTimeout(() => {
-				accordion.open = false
-			}, 333)
+			setTimeout(() => (accordion.open = false), 333)
 		}
 	},
 	template({ maxHeight, open, label, content }) {
