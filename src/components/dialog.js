@@ -23,12 +23,7 @@ export default cuick({
 		)
 	},
 	template({ open, variant, enterFrom }) {
-		const classList = [
-			variant,
-			enterFrom,
-			open ? 'open' : 'closed',
-			'surface',
-		].join(' ')
+		const classList = [variant, enterFrom, open ? 'open' : 'closed'].join(' ')
 		return html`
 			<slot name="open">
 				<button @click=${() => this.openDialog()}>Open Dialog</button>
@@ -47,6 +42,9 @@ export default cuick({
 	},
 	styles: css`
 		:host {
+			--dialogBg: var(--themeSurfaceBg, var(--defaultSurfaceBg));
+			--dialogColor: var(--themeSurfaceColor, var(--defaultSurfaceColor));
+			--dialogBorder: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			--dialogBorderRadius: 1rem;
 			--dialogPadding: 1rem;
 			--dialogHeight: unset;
@@ -60,7 +58,10 @@ export default cuick({
 			cursor: pointer;
 		}
 		dialog {
+			background: var(--dialogBg);
+			border: var(--dialogBorder);
 			border-radius: var(--dialogBorderRadius);
+			color: var(--dialogColor);
 			height: var(--dialogHeight);
 			padding: var(--dialogPadding);
 			position: fixed;

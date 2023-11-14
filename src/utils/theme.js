@@ -15,20 +15,16 @@ const defaultTheme = `
 			rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
 			rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
 	}
-	.surface {
-		background: var(--themeSurfaceBg, var(--defaultSurfaceBg));
-		box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
-	}
-	@media (prefers-color-scheme: dark) {
-		.surface{
-			border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
-			box-shadow: none;
-		}
-	}
 	/* End of default theme */
 `
 
+const surface = `
+	background: var(--themeSurfaceBg, var(--defaultSurfaceBg));
+	border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
+	box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
+`
+
 export default ([v]) => {
-	v = defaultTheme + v
+	v = defaultTheme + v.replace('/* surface */', surface)
 	return v.includes('&') ? transform(v) : v
 }

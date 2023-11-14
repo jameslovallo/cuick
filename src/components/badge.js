@@ -14,7 +14,7 @@ export default cuick({
 				? html`<a part=${variant} href=${href} target=${target}>${slot}</a>`
 				: html`<div part="${variant}">${slot}</div>`
 		return html`
-			<slot><div class="demo-box surface"></div></slot>
+			<slot><div class="demo-box"></div></slot>
 			${el(html`<span part="label">${label}</span>`)}
 		`
 	},
@@ -76,11 +76,7 @@ export default cuick({
 		.demo-box {
 			height: 4rem;
 			min-width: 200px;
-		}
-		@media (prefers-color-scheme: dark) {
-			.demo-box {
-				border: 1px solid themeBorder;
-			}
+			/* surface */
 		}
 	`,
 })

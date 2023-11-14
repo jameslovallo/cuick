@@ -59,13 +59,11 @@ cuick({
 	styles: css`
 		nav {
 			align-items: center;
-			background: themeSurfaceBg;
-			border: themeSurfaceBorder;
-			box-shadow: themeSurfaceShadow;
 			display: inline-flex;
 			font-size: 14px;
 			gap: 1em;
 			padding: 0.5em;
+			/* surface */
 		}
 		@media (max-width: 480px) {
 			nav {
