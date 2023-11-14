@@ -25,8 +25,8 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--buttonColor: var(--primaryBg);
-			--buttonFilledColor: var(--primaryColor);
+			--buttonColor: var(--primaryBg, var(--defaultPrimaryBg));
+			--buttonFilledColor: var(--primaryColor, var(--defaultPrimaryColor));
 			display: inline-block;
 		}
 		a,
