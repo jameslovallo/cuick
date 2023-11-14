@@ -1,6 +1,6 @@
 {
 	"name": "cuick",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "It's time to make web devopment fun again.",
 	"type": "module",
 	"main": "src/cuick.js",
