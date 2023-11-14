@@ -18,18 +18,18 @@ const defaultTheme = `
 `
 
 const primary = `
-	--background: var(--primaryBg);
+	--bg: var(--primaryBg);
 	--color: var(--primaryColor);
-	background: var(--background);
+	background: var(--bg);
 	color: var(--color);
 `
 
 const surface = `
-	--background: var(--surfaceBg);
+	--bg: var(--surfaceBg);
 	--border: var(--surfaceBorder);
 	--box-shadow: var(--surfaceShadow);
 	--color: var(--surfaceColor);
-	background: var(--background);
+	background: var(--bg);
 	border: var(--border);
 	box-shadow: var(--box-shadow);
 	color: var(--color);
