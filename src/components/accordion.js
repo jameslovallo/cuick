@@ -41,20 +41,13 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--accordionBg: var(--themeSurfaceBg, var(--defaultSurfaceBg));
-			--accordionColor: var(--themeSurfaceColor, var(--defaultSurfaceColor));
 			--accordionContentBg: inherit;
 			--accordionConentColor: currentColor;
-			--accordionBorder: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			--accordionBorderRadius: 0;
 			--accordionPadding: 1rem;
-			--accordionShadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
-			background: var(--accordionBg);
-			border: var(--accordionBorder);
 			border-radius: var(--accordionBorderRadius);
-			box-shadow: var(--accordionShadow);
-			color: var(--accordionColor);
 			display: block;
+			/* surface */
 		}
 		:host(:not(:last-of-type)) {
 			border-bottom: 0;

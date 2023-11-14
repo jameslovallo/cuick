@@ -22,6 +22,7 @@ const surface = `
 	background: var(--themeSurfaceBg, var(--defaultSurfaceBg));
 	border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 	box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
+	color: var(--themeSurfaceColor, var(--defaultSurfaceColor));
 `
 
 export default ([v]) => {
