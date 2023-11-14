@@ -25,8 +25,8 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--buttonColor: var(--themePrimaryBg, var(--defaultPrimaryBg));
-			--buttonFilledColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
+			--buttonColor: var(--primaryBg);
+			--buttonFilledColor: var(--primaryColor);
 			display: inline-block;
 		}
 		a,
@@ -96,7 +96,7 @@ export default cuick({
 			padding: 0;
 		}
 		.icon slot::slotted(*) {
-			color: currentcolor;
+			color: currentColor;
 			width: 1rem;
 		}
 		.icon.medium slot::slotted(*) {

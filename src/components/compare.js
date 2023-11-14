@@ -31,9 +31,7 @@ export default cuick({
 		:host {
 			--compareBorderRadius: 0.5rem;
 			--compareDividerColor: white;
-			--compareButtonBg: var(--themePrimaryBg, var(--defaultPrimaryBg));
 			/* prettier-ignore */
-			--compareButtonColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
 			display: block;
 			position: relative;
 		}
@@ -97,8 +95,8 @@ export default cuick({
 			width: 0.5rem;
 		}
 		button {
+			/* primary */
 			align-items: center;
-			background: var(--compareButtonBg);
 			border-radius: 2rem;
 			border: 0;
 			box-shadow: 0 0 5px black;
@@ -113,7 +111,7 @@ export default cuick({
 			width: 2rem;
 		}
 		button svg {
-			fill: var(--compareButtonColor);
+			fill: currentColor;
 			width: 24px;
 		}
 	`,

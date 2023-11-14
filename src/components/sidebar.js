@@ -38,8 +38,8 @@ cuick({
 	},
 	styles: css`
 		:host {
-			background: var(--themeSurfaceBg, var(--defaultSurfaceBg));
-			box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
+			/* surface */
+			border: none;
 		}
 		p {
 			font-weight: bold;
@@ -64,13 +64,13 @@ cuick({
 					position: absolute;
 					top: 0;
 					width: 100%;
-					background: var(--themePrimaryBg, var(--defaultPrimaryBg));
+					background: var(--primaryBg);
 				}
 				&.active {
-					color: var(--themePrimaryBg, var(--defaultPrimaryBg));
+					color: var(--primaryBg);
 				}
 				&:active {
-					background: var(--themePrimaryBg, var(--defaultPrimaryBg));
+					background: var(--primaryBg);
 					color: white;
 				}
 			}

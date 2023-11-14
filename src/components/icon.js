@@ -17,7 +17,7 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--icon-color: currentcolor;
+			--icon-color: currentColor;
 			--icon-size: 2rem;
 			aspect-ratio: 1;
 			display: inline-block;

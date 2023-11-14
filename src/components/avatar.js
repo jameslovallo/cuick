@@ -17,14 +17,14 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--avatarBg: var(--themePrimaryBg, var(--defaultPrimaryBg));
-			--avatarColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
-			color: var(--avatarColor);
+			/* primary */
+			--avatar-border-radius: 2rem;
+			border-radius: var(--avatar-border-radius);
 			display: inline-block;
+			overflow: hidden;
 		}
 		img,
 		slot {
-			border-radius: var(--avatar-border-radius);
 			height: var(--avatar-size);
 			width: var(--avatar-size);
 		}
@@ -56,13 +56,13 @@ export default cuick({
 			--avatar-size: 4rem;
 			--avatar-font-size: 2rem;
 		}
-		.circle {
+		:host([shape='circle']) {
 			--avatar-border-radius: 2rem;
 		}
-		.rounded {
+		:host([shape='rounded']) {
 			--avatar-border-radius: 0.25rem;
 		}
-		.squared {
+		:host([shape='squared']) {
 			--avatar-border-radius: 0;
 		}
 	`,

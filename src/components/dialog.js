@@ -42,9 +42,6 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--dialogBg: var(--themeSurfaceBg, var(--defaultSurfaceBg));
-			--dialogColor: var(--themeSurfaceColor, var(--defaultSurfaceColor));
-			--dialogBorder: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
 			--dialogBorderRadius: 1rem;
 			--dialogPadding: 1rem;
 			--dialogHeight: unset;
@@ -58,10 +55,8 @@ export default cuick({
 			cursor: pointer;
 		}
 		dialog {
-			background: var(--dialogBg);
-			border: var(--dialogBorder);
+			/* surface */
 			border-radius: var(--dialogBorderRadius);
-			color: var(--dialogColor);
 			height: var(--dialogHeight);
 			padding: var(--dialogPadding);
 			position: fixed;

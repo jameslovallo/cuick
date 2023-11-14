@@ -1,13 +1,13 @@
 :root {
 	color-scheme: dark light;
 	font-family: sans-serif;
-	--defaultPrimaryBg: dodgerblue;
-	--defaultPrimaryColor: white;
-	--defaultSurfaceBg: #16181d;
-	--defaultSurfaceBorder: 1px solid #282c34;
-	--defaultSurfaceDivider: 1px solid #282c34;
-	--defaultSurfaceColor: white;
-	--defaultSurfaceShadow: none;
+	--primaryBg: dodgerblue;
+	--primaryColor: white;
+	--surfaceBg: #16181d;
+	--surfaceBorder: 1px solid #282c34;
+	--surfaceDivider: 1px solid #282c34;
+	--surfaceColor: white;
+	--surfaceShadow: none;
 }
 
 body {

@@ -20,8 +20,8 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--badgeBgColor: var(--themePrimaryBg, var(--defaultPrimaryBg));
-			--badgeColor: var(--themePrimaryColor, var(--defaultPrimaryColor));
+			--badgeBgColor: var(--primaryBg);
+			--badgeColor: var(--primaryColor);
 			display: block;
 			position: relative;
 			width: max-content;

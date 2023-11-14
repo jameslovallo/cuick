@@ -14,17 +14,10 @@ export default cuick({
 	},
 	styles: css`
 		:host {
-			--cardBg: var(--themeSurfaceBg, var(--defaultSurfaceBg));
-			--cardColor: var(--themeSurfaceColor, var(--defaultSurfaceColor));
-			--cardBorder: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
+			/* surface */
 			--cardBorderRadius: 0;
 			--cardPadding: 1rem;
-			--cardShadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
-			background: var(--cardBg);
-			border: var(--cardBorder);
 			border-radius: var(--cardBorderRadius);
-			box-shadow: var(--cardShadow);
-			color: var(--cardColor);
 			display: block;
 			overflow: hidden;
 		}

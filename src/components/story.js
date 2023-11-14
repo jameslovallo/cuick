@@ -119,30 +119,25 @@ export default cuick({
 	},
 	styles: css`
 		:host {
+			/* surface */
+			background: transparent;
 			display: block;
 			border-radius: 0.5rem;
-			box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
 			overflow: hidden;
-		}
-		@media (prefers-color-scheme: dark) {
-			:host {
-				border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
-				box-shadow: none;
-			}
 		}
 		slot {
 			display: block;
 			padding: 1rem;
 		}
 		[part='controls'] {
-			background: var(--themeSurfaceBg, var(--defaultSurfaceBg));
+			background: var(--surfaceBg);
 			list-style: none;
 			margin: 0;
 			padding: 0;
 		}
 		label {
 			align-items: center;
-			border-top: var(--themeSurfaceDivider, var(--defaultSurfaceDivider));
+			border-top: var(--surfaceBorder);
 			display: flex;
 			font-size: 14px;
 			gap: 1rem;
@@ -160,7 +155,7 @@ export default cuick({
 			-webkit-appearance: none;
 			appearance: none;
 			border-radius: 1rem;
-			border: var(--themeSurfaceDivider, var(--defaultSurfaceDivider));
+			border: var(--surfaceBorder);
 			font: inherit;
 			height: 2rem;
 			margin: 0;
@@ -176,9 +171,9 @@ export default cuick({
 		}
 		input[type='checkbox']:before {
 			align-items: center;
-			border: var(--themeSurfaceBorder, var(--defaultSurfaceBorder));
+			border: var(--surfaceBorder);
 			border-radius: 1rem;
-			box-shadow: var(--themeSurfaceShadow, var(--defaultSurfaceShadow));
+			box-shadow: var(--surfaceShadow);
 			box-sizing: border-box;
 			content: 'false';
 			display: flex;
