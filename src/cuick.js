@@ -1,5 +1,5 @@
 import { css, toKebab } from './utils/index.js'
-import { html, svg, render as uhtml } from '//cdn.skypack.dev/uhtml'
+import { html, svg, render as uhtml } from '//cdn.skypack.dev/uhtml@3'
 export { css, html, svg, toKebab }
 
 export default function cuick(options) {
