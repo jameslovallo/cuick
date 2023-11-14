@@ -7,7 +7,7 @@ export default cuick({
 		src: '',
 		alt: '',
 		size: { default: 'medium', options: ['small', 'medium', 'large'] },
-		shape: ['circle', 'rounded', 'squared'],
+		shape: ['squared', 'rounded', 'circle'],
 	},
 	template({ label, src, alt, size, shape }) {
 		const classList = [size, shape].join(' ')
@@ -18,7 +18,6 @@ export default cuick({
 	styles: css`
 		:host {
 			/* primary */
-			--avatar-border-radius: 2rem;
 			border-radius: var(--avatar-border-radius);
 			display: inline-block;
 			overflow: hidden;
