@@ -59,9 +59,6 @@ export default cuick({
 		:host(:not(:last-of-type)) {
 			border-bottom: 0;
 		}
-		cuick-accordion + :host() {
-			background: red;
-		}
 		summary {
 			align-items: center;
 			box-sizing: border-box;

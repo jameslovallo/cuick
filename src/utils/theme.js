@@ -4,7 +4,7 @@ const defaultTheme = `
 	* {
 		box-sizing: border-box
 	}
-	:host {
+	:root {
 		--defaultPrimaryBg: dodgerblue;
 		--defaultPrimaryColor: white;
 		--defaultSurfaceBg: #fafafa;
@@ -14,17 +14,6 @@ const defaultTheme = `
 		--defaultSurfaceShadow:
 			rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
 			rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
-	}
-	@media( prefers-color-scheme: dark ) {
-		:host {
-			--defaultPrimaryBg: dodgerblue;
-			--defaultPrimaryColor: white;
-			--defaultSurfaceBg: #16181d;
-			--defaultSurfaceBorder: 1px solid #282c34;
-			--defaultSurfaceDivider: 1px solid #282c34;
-			--defaultSurfaceColor: white;
-			--defaultSurfaceShadow: none;
-		}
 	}
 	.surface {
 		background: var(--themeSurfaceBg, var(--defaultSurfaceBg));
