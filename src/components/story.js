@@ -120,7 +120,6 @@ export default cuick({
 	styles: css`
 		:host {
 			/* surface */
-			background: transparent;
 			display: block;
 			border-radius: 0.5rem;
 			overflow: hidden;
@@ -137,7 +136,7 @@ export default cuick({
 		}
 		label {
 			align-items: center;
-			border-top: var(--surfaceBorder);
+			border-top: var(--surfaceBorder, var(--defaultSurfaceBorder));
 			display: flex;
 			font-size: 14px;
 			gap: 1rem;

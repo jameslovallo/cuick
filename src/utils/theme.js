@@ -4,35 +4,27 @@ const defaultTheme = `
 	* {
 		box-sizing: border-box
 	}
-	:root {
-		--primaryBg: dodgerblue;
-		--primaryColor: white;
-		--surfaceBg: #fafafa;
-		--surfaceBorder: none;
-		--surfaceColor: black;
-		--surfaceShadow:
-			rgba(0, 0, 0, 0.1) 0px 1px 3px 1px,
-			rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+	:host {
+		--defaultPrimaryBg: dodgerblue;
+		--defaultPrimaryColor: white;
+		--defaultSurfaceBg: #fafafa;
+		--defaultSurfaceBorder: 1px solid rgba(125, 125, 125, 0.5);
+		--defaultSurfaceColor: black;
+		--defaultSurfaceShadow: none;
 	}
 	/* End of default theme */
 `
 
 const primary = `
-	--bg: var(--primaryBg);
-	--color: var(--primaryColor);
-	background: var(--bg);
-	color: var(--color);
+	background: var(--primaryBg, var(--defaultPrimaryBg));
+	color: var(--primaryColor, var(--defaultPrimaryColor));
 `
 
 const surface = `
-	--bg: var(--surfaceBg);
-	--border: var(--surfaceBorder);
-	--box-shadow: var(--surfaceShadow);
-	--color: var(--surfaceColor);
-	background: var(--bg);
-	border: var(--border);
-	box-shadow: var(--box-shadow);
-	color: var(--color);
+	background: var(--surfaceBg, var(--defaultSurfaceBg));
+	border: var(--surfaceBorder, var(--defaultSurfaceBorder));
+	box-shadow: var(--surfaceShadow, var(--defaultSurfaceShadow));
+	color: var(--surfaceColor, var(--defaultSurfaceColor));
 `
 
 export default ([v]) => {
